@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Graver Furniture</title>
+    <title><?= $perunama ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="<?= base_url() ?>/assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="<?= base_url() ?>/assets/img/<?= $peruicon ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/assets/img/<?= $peruicon ?>">
 
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/templatemo.css">
@@ -16,6 +16,7 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -26,12 +27,14 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:<?= $perunama ?>"><?= $perunama ?></a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:<?= $perutelp ?>"><?= $perutelp ?></a>
+                    <i class="fa fa-whatsapp mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="https://wa.me/<?= $peruwa ?>?text=Halo Graver..." target="_blank"><?= $peruwa ?></a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class=" text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
@@ -47,7 +50,7 @@
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Graver Furniture
+                <?= $perunama ?>
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -337,10 +340,10 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Graver Furniture</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo"><?= $perunama ?></h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
-                            <a class="text-decoration-none" href="https://www.google.com/search?rlz=1C1CHBD_idID1000ID1000&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=ALiCzsaGgCmnbpGYW9jbyseQzh_Uqz7SFQ:1661217535524&q=rackindo+setara+perkasa&rflfq=1&num=10&rldimm=9454104175095087122#rlfi=hd:;si:9454104175095087122;mv:[[-6.100543999999999,106.7097569],[-6.1151222,106.703463]];tbs:lrf:!1m4!1u2!2m2!2m1!1e1!2m1!1e2!3sIAE,lf:1,lf_ui:2" target="_blank"><i class="fas fa-map-marker-alt fa-fw"></i> Jl. Kapuk Kamal Indah 1 No.Kav 15 - 17, RT.9/RW.1, Kamal, Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11810</a>
+                            <a class="text-decoration-none" href="https://www.google.com/search?rlz=1C1CHBD_idID1000ID1000&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=ALiCzsaGgCmnbpGYW9jbyseQzh_Uqz7SFQ:1661217535524&q=rackindo+setara+perkasa&rflfq=1&num=10&rldimm=9454104175095087122#rlfi=hd:;si:9454104175095087122;mv:[[-6.100543999999999,106.7097569],[-6.1151222,106.703463]];tbs:lrf:!1m4!1u2!2m2!2m1!1e1!2m1!1e2!3sIAE,lf:1,lf_ui:2" target="_blank"><i class="fas fa-map-marker-alt fa-fw"></i><?= $perualamat ?></a>
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
