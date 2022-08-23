@@ -9,6 +9,6 @@ class ModelPerusahaan extends Model
     protected $table            = 'perusahaan';
     protected $primaryKey       = 'peruid';
     protected $allowedFields    = [
-        'perunama', 'perualamat', 'peruwa', 'perutelp', 'perufax', 'peruemail', 'peruicon', 'perufoto'
+        'perunama', 'perualamat', 'perualamatlink', 'peruwa', 'perutelp', 'perufax', 'peruemail', 'peruicon', 'perufoto'
     ];
 }

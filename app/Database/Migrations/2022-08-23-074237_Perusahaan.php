@@ -22,6 +22,9 @@ class Perusahaan extends Migration
             'perualamat' => [
                 'type'       => 'text',
             ],
+            'perualamatlink' => [
+                'type'       => 'text',
+            ],
             'perutelp' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
