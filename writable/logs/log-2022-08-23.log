@@ -41,3 +41,366 @@ in APPPATH\Controllers\Home.php on line 14.
  3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 20:48:16 --> Undefined variable: tampilbaner
+in APPPATH\Views\halaman_utama.php on line 211.
+ 1 APPPATH\Views\halaman_utama.php(211): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: tampilbaner', 'APPPATH\\Views\\halaman_utama.php', 211, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\halaman_utama.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('halaman_utama', [], true)
+ 5 APPPATH\Controllers\Home.php(42): view('halaman_utama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 20:48:32 --> Undefined variable: tampilbaner
+in APPPATH\Views\halaman_utama.php on line 211.
+ 1 APPPATH\Views\halaman_utama.php(211): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: tampilbaner', 'APPPATH\\Views\\halaman_utama.php', 211, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\halaman_utama.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('halaman_utama', [], true)
+ 5 APPPATH\Controllers\Home.php(42): view('halaman_utama', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-08-23 20:53:03 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3 in C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\toko-online\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\toko-online\system\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\toko-online\app\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\toko-online\app\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(NULL)
+#7 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+#8 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\toko-online\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-08-23 20:53:03 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(null)
+ 8 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-08-23 20:55:15 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3 in C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\toko-online\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\toko-online\system\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\toko-online\app\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\toko-online\app\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(NULL)
+#7 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+#8 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\toko-online\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-08-23 20:55:15 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(null)
+ 8 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-08-23 20:57:57 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3 in C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\toko-online\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\toko-online\system\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\toko-online\app\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\toko-online\app\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(NULL)
+#7 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+#8 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\toko-online\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-08-23 20:57:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(null)
+ 8 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-08-23 20:59:37 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3 in C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\toko-online\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\toko-online\system\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\toko-online\app\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\toko-online\app\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(NULL)
+#7 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+#8 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\toko-online\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-08-23 20:59:37 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\Home.php(51): App\Models\ModelBaner->tampilDataBaner(null)
+ 8 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 21:00:19 --> Call to a member function getResultArray() on array
+in APPPATH\Views\tampilbaner.php on line 1.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('tampilbaner', [], true)
+ 4 APPPATH\Controllers\Home.php(64): view('tampilbaner', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 21:01:58 --> Call to a member function getResultArray() on array
+in APPPATH\Views\tampilbaner.php on line 1.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('tampilbaner', [], true)
+ 4 APPPATH\Controllers\Home.php(64): view('tampilbaner', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 21:13:54 --> Call to a member function getResultArray() on array
+in APPPATH\Views\tampilbaner.php on line 1.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('tampilbaner', [], true)
+ 4 APPPATH\Controllers\Home.php(56): view('tampilbaner', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-08-23 21:14:56 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3 in C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\toko-online\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\toko-online\system\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\toko-online\app\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\toko-online\app\Controllers\Home.php(50): App\Models\ModelBaner->tampilDataBaner(NULL)
+#7 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+#8 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\toko-online\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-08-23 21:14:56 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerakhir` > IS NULL' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `baner`
+WHERE `banerawal` < IS NULL
+AND `banerakhir` > IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\Home.php(50): App\Models\ModelBaner->tampilDataBaner(null)
+ 8 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-08-23 21:17:55 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerawal` < IS NULL' at line 3 in C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\toko-online\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\toko-online\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\toko-online\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\toko-online\system\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\toko-online\app\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\toko-online\app\Controllers\Home.php(50): App\Models\ModelBaner->tampilDataBaner(NULL)
+#7 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+#8 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\xampp\htdocs\toko-online\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\toko-online\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-08-23 21:17:55 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `banerawal` < IS NULL' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `baner`
+WHERE `banerakhir` > IS NULL
+AND `banerawal` < IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `baner`
+WHERE `banerakhir` > IS NULL
+AND `banerawal` < IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `baner`
+WHERE `banerakhir` > IS NULL
+AND `banerawal` < IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `baner`
+WHERE `banerakhir` > IS NULL
+AND `banerawal` < IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(771): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelBaner.php(17): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\Home.php(50): App\Models\ModelBaner->tampilDataBaner(null)
+ 8 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 21:21:39 --> Undefined index: banedeskripsi
+in APPPATH\Views\tampilbaner.php on line 13.
+ 1 APPPATH\Views\tampilbaner.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: banedeskripsi', 'APPPATH\\Views\\tampilbaner.php', 13, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\tampilbaner.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('tampilbaner', [], true)
+ 5 APPPATH\Controllers\Home.php(56): view('tampilbaner', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 21:46:45 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH\Controllers\Home.php on line 53.
+ 1 APPPATH\Controllers\Home.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH\\Controllers\\Home.php', 53, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 21:47:24 --> Object of class CodeIgniter\Database\MySQLi\Result could not be converted to int
+in APPPATH\Controllers\Home.php on line 53.
+ 1 APPPATH\Controllers\Home.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Object of class CodeIgniter\\Database\\MySQLi\\Result could not be converted to int', 'APPPATH\\Controllers\\Home.php', 53, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 21:48:12 --> Undefined variable: indikator
+in APPPATH\Controllers\Home.php on line 60.
+ 1 APPPATH\Controllers\Home.php(60): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: indikator', 'APPPATH\\Controllers\\Home.php', 60, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 22:08:47 --> Undefined variable: rowBaner
+in APPPATH\Views\tampilbaner.php on line 13.
+ 1 APPPATH\Views\tampilbaner.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: rowBaner', 'APPPATH\\Views\\tampilbaner.php', 13, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\tampilbaner.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('tampilbaner', [], true)
+ 5 APPPATH\Controllers\Home.php(62): view('tampilbaner', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 22:09:12 --> Undefined variable: rowBaner
+in APPPATH\Views\tampilbaner.php on line 8.
+ 1 APPPATH\Views\tampilbaner.php(8): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: rowBaner', 'APPPATH\\Views\\tampilbaner.php', 8, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\tampilbaner.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('tampilbaner', [], true)
+ 5 APPPATH\Controllers\Home.php(62): view('tampilbaner', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-23 22:09:55 --> Undefined variable: rowBaner
+in APPPATH\Views\tampilbaner.php on line 8.
+ 1 APPPATH\Views\tampilbaner.php(8): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: rowBaner', 'APPPATH\\Views\\tampilbaner.php', 8, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\tampilbaner.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('tampilbaner', [], true)
+ 5 APPPATH\Controllers\Home.php(62): view('tampilbaner', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->tampilBaner()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
