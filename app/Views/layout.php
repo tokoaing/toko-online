@@ -19,6 +19,14 @@
     <!-- icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+
+
+
+
 </head>
 
 <body>
@@ -62,10 +70,10 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url() ?>">Home</a>
+                            <a class="nav-link" href="<?= base_url() ?>">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url() ?>/home/katalog">Shop</a>
+                            <a class="nav-link" href="<?= base_url() ?>/home/katalog">Katalog</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
@@ -80,10 +88,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-icon position-relative text-decoration-none" href="#">
-                                Sutino
+                            <a class="nav-icon position-relative text-decoration-none tombolLogin" href="#">
                                 <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
                             </a>
                         </li>
                     </ul>
@@ -93,6 +99,12 @@
         </div>
     </nav>
     <!-- Close Header -->
+
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="viewmodal" style="display: none;"></div>
 
 
     <?= $this->renderSection('isi'); ?>
@@ -195,6 +207,27 @@
 
 
     <script>
+        $(document).ready(function() {
+            $('.tombolLogin').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "<?= base_url() ?>/home/modalLogin",
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.data) {
+                            $('.viewmodal').html(response.data).show();
+                            $('#modalLogin').modal('show');
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + '\n' + thrownError);
+                    }
+                });
+            });
+        });
+
+
+
         document.addEventListener("DOMContentLoaded", function() {
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {

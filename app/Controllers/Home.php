@@ -129,4 +129,16 @@ class Home extends BaseController
             exit('Maaf, gagal menampilkan data');
         }
     }
+
+    //modal Login
+    function modalLogin()
+    {
+        if ($this->request->isAJAX()) {
+            $json = [
+                'data'  => view('formlogin')
+            ];
+
+            echo json_encode($json);
+        }
+    }
 }

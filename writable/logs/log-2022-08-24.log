@@ -323,3 +323,45 @@ in APPPATH\Views\katalogtampil.php on line 36.
  8 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-24 05:27:56 --> Undefined variable: tampilkatalog
+in APPPATH\Views\katalogtampil.php on line 1.
+ 1 APPPATH\Views\katalogtampil.php(1): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: tampilkatalog', 'APPPATH\\Views\\katalogtampil.php', 1, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\katalogtampil.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogtampil', [], true)
+ 5 APPPATH\Controllers\Home.php(119): view('katalogtampil', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogTampil()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-24 05:28:00 --> Undefined variable: tampilkatalog
+in APPPATH\Views\katalogtampil.php on line 1.
+ 1 APPPATH\Views\katalogtampil.php(1): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: tampilkatalog', 'APPPATH\\Views\\katalogtampil.php', 1, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\katalogtampil.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogtampil', [], true)
+ 5 APPPATH\Controllers\Home.php(119): view('katalogtampil', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogTampil()
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-24 05:31:45 --> Cannot use object of type stdClass as array
+in APPPATH\Views\katalogtampil.php on line 6.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogtampil', [], true)
+ 4 APPPATH\Controllers\Home.php(119): view('katalogtampil', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogTampil()
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-24 05:33:10 --> Cannot use object of type stdClass as array
+in APPPATH\Views\katalogtampil.php on line 6.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogtampil', [], true)
+ 4 APPPATH\Controllers\Home.php(124): view('katalogtampil', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogTampil()
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
