@@ -3,8 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\ModelBaner;
+use App\Models\ModelLevels;
 use App\Models\ModelPerusahaan;
 use App\Models\ModelProduct;
+use App\Models\ModelUsers;
+use Config\Services;
 
 class Home extends BaseController
 {
@@ -130,13 +133,69 @@ class Home extends BaseController
         }
     }
 
-    //modal Login
-    function modalLogin()
+    //form Login
+    function login()
     {
         if ($this->request->isAJAX()) {
-            $json = [
-                'data'  => view('formlogin')
-            ];
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+
+            $validation = \Config\Services::validation();
+
+
+
+            $valid = $this->validate([
+                'email'    => [
+                    'label'     => 'Email',
+                    'rules'     => 'required',
+                    'errors'    => [
+                        'required'  => '{field} tidak boleh kosong'
+                    ]
+                ],
+                'password'    => [
+                    'label'     => 'Password',
+                    'rules'     => 'required',
+                    'errors'    => [
+                        'required'  => '{field} tidak boleh kosong'
+                    ]
+                ]
+            ]);
+
+            if (!$valid) {
+                $json = [
+                    'error' => [
+                        'errEmail'     => $validation->getError('email'),
+                        'errPassword'   => $validation->getError('password'),
+                    ]
+                ];
+            } else {
+                $modelUser  = new ModelUsers();
+
+                $cekUser = $modelUser->find($email);
+                $passwordUser = $cekUser['userpassword'];
+
+
+                if ($cekUser == null) {
+                    $json = [
+                        'error' => [
+                            'errEmail'     => 'Maaf user tidak terdaftar',
+                        ]
+                    ];
+                } else {
+                    if ($password == $passwordUser) {
+                        //lanjutkan
+                        $json = [
+                            'sukses' => 'Anda berhasil login...'
+                        ];
+                    } else {
+                        $json = [
+                            'error' => [
+                                'errPassword'     => 'Maaf passwordword anda salah !!',
+                            ]
+                        ];
+                    }
+                }
+            }
 
             echo json_encode($json);
         }

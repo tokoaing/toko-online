@@ -27,6 +27,7 @@
 
 
 
+
 </head>
 
 <body>
@@ -82,15 +83,12 @@
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-icon position-relative text-decoration-none" href="#">
-                                <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                                <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                            </a>
+
                         </li>
                         <li class="nav-item">
-                            <a class="nav-icon position-relative text-decoration-none tombolLogin" href="#">
-                                <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            </a>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalLogin">
+                                Login
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -100,11 +98,56 @@
     </nav>
     <!-- Close Header -->
 
-    <!-- Button trigger modal -->
+    <!-- Modal Login -->
+    <div class="modal fade" id="modalLogin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLoginLabel">Silahkan Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('home/login') ?>" class="formsimpan">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                            <div class="invalid-feedback errorEmail"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                            <div class="invalid-feedback errorPassword"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="formLogin">Belum punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalDaftar">disini</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal daftar -->
+    <div class="modal fade" id="modalDaftar" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalDaftarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDaftarLabel">Form Daftar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <!-- Modal -->
-    <div class="viewmodal" style="display: none;"></div>
 
 
     <?= $this->renderSection('isi'); ?>
@@ -208,22 +251,51 @@
 
     <script>
         $(document).ready(function() {
-            $('.tombolLogin').click(function(e) {
+            $('.formsimpan').submit(function(e) {
                 e.preventDefault();
+
                 $.ajax({
-                    url: "<?= base_url() ?>/home/modalLogin",
+                    type: "post",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
                     dataType: "json",
                     success: function(response) {
-                        if (response.data) {
-                            $('.viewmodal').html(response.data).show();
-                            $('#modalLogin').modal('show');
+                        if (response.error) {
+                            let err = response.error;
+
+                            if (err.errEmail) {
+                                $('#email').addClass('is-invalid');
+                                $('.errorEmail').html(err.errEmail);
+                            } else {
+                                $('#email').removeClass('is-invalid');
+                                $('#email').addClass('is-valid');
+                            }
+
+                            if (err.errPassword) {
+                                $('#password').addClass('is-invalid');
+                                $('.errorPassword').html(err.errPassword);
+                            } else {
+                                $('#password').removeClass('is-invalid');
+                                $('#password').addClass('is-valid');
+                            }
+                        }
+
+                        if (response.sukses) {
+                            alert('berhasil');
                         }
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         alert(xhr.status + '\n' + thrownError);
                     }
                 });
+
             });
+
+            $('#closeModal').click(function(e) {
+                e.preventDefault();
+                window.location.reload();
+            });
+
         });
 
 
