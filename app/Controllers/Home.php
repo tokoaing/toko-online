@@ -183,7 +183,11 @@ class Home extends BaseController
                     ];
                 } else {
                     if ($password == $passwordUser) {
-                        //lanjutkan
+                        $simpan_session = [
+                            'iduser'    => $email,
+                            'namauser'  => $cekUser['usernama'],
+                        ];
+                        session()->set($simpan_session);
                         $json = [
                             'sukses' => 'Anda berhasil login...'
                         ];
@@ -196,6 +200,20 @@ class Home extends BaseController
                     }
                 }
             }
+
+            echo json_encode($json);
+        }
+    }
+
+    // fungsi Logout
+    public function keluar()
+    {
+        if ($this->request->isAJAX()) {
+            session()->destroy();
+
+            $json = [
+                'sukses' => 'Anda berhasil logout...'
+            ];
 
             echo json_encode($json);
         }

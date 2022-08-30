@@ -24,6 +24,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 
+    <link rel="stylesheet" href="<?= base_url() ?>/plugins/sweetalert2/sweetalert2.min.css">
+    <script src="<?= base_url() ?>/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
 
 
@@ -44,10 +46,7 @@
                     <a class="navbar-sm-brand text-light text-decoration-none" href="https://wa.me/<?= $peruwa ?>?text=Halo Graver..." target="_blank"><?= $peruwa ?></a>
                 </div>
                 <div>
-                    <a class=" text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/rackindo.idn/?hl=id" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                 </div>
             </div>
         </div>
@@ -85,11 +84,24 @@
                         <li class="nav-item">
 
                         </li>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalLogin">
-                                Login
-                            </button>
-                        </li>
+                        <?php
+                        if (session()->namauser) {
+                        ?>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('profil/index/' . session()->iduser) ?>"><?= session()->namauser ?></a></li>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-outline-danger" id="logout">Logout</button>
+                            </li>
+                        <?php
+                        } else {
+                        ?>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalLogin">
+                                    Login
+                                </button>
+                            </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -209,16 +221,7 @@
                 <div class="col-auto me-auto">
                     <ul class="list-inline text-left footer-icons">
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/rackindo.idn/?hl=id"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -281,7 +284,16 @@
                         }
 
                         if (response.sukses) {
-                            alert('berhasil');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.sukses
+                            }).then((resul) => {
+                                if (resul.isConfirmed) {
+                                    window.location
+                                        .reload();
+                                }
+                            });
                         }
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
@@ -294,6 +306,25 @@
             $('#closeModal').click(function(e) {
                 e.preventDefault();
                 window.location.reload();
+            });
+
+            $('#logout').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "<?= base_url() ?>/home/keluar",
+                    dataType: "json",
+                    success: function(response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.sukses
+                        }).then((resul) => {
+                            if (resul.isConfirmed) {
+                                window.location.href = '<?= base_url() ?>/home/index';
+                            }
+                        });
+                    }
+                });
             });
 
         });

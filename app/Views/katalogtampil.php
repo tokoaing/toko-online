@@ -13,16 +13,9 @@
                 </div>
             </div>
             <div class="card-body">
-                <a href="shop-single.html" class="h3 text-decoration-none"><?= $rowproduct['prodnama'] ?></a>
+                <a href="#" class="h3 text-decoration-none"><strong><?= $rowproduct['prodnama'] ?></strong></a>
                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                     <li><?= $rowproduct['prodtype'] ?></li>
-                    <li class="pt-2">
-                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                    </li>
                 </ul>
                 <ul class="list-unstyled d-flex justify-content-center mb-1">
                     <li>
@@ -33,7 +26,7 @@
                         <i class="text-muted fa fa-star"></i>
                     </li>
                 </ul>
-                <p class="text-center mb-0"><?= $rowproduct['prodnama'] ?></p>
+                <p class="text mb-0"><?= $rowproduct['proddeskripsi'] ?></p>
             </div>
         </div>
     </div>

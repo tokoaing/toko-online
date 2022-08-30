@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Agu 2022 pada 12.11
+-- Waktu pembuatan: 30 Agu 2022 pada 12.52
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.28
 
@@ -97,6 +97,13 @@ CREATE TABLE `levels` (
   `levelnama` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `levels`
+--
+
+INSERT INTO `levels` (`levelid`, `levelnama`) VALUES
+(1, 'Admin');
+
 -- --------------------------------------------------------
 
 --
@@ -148,7 +155,7 @@ CREATE TABLE `perusahaan` (
 --
 
 INSERT INTO `perusahaan` (`peruid`, `perunama`, `perualamat`, `perualamatlink`, `perutelp`, `peruwa`, `perufax`, `peruemail`, `peruicon`, `perufoto`) VALUES
-(1, 'Graver Furniture', 'Jl. Kapuk Kamal Indah 1 No.Kav 15 - 17, RT.9/RW.1, Kamal, Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11810', 'https://www.google.com/maps/place/Rackindo+Setara+Perkasa+(GRAVER)/@-6.1014157,106.7102402,19z/data=!4m5!3m4!1s0x2e6a02d9ade5f543:0x8333b9a842148012!8m2!3d-6.1013744!4d106.7094539', '021 5595 1295', '+6285810100913', '021 2255 6109', 'rackindo@gmail.com', 'favicon.png', '');
+(1, 'Graver Furniture', 'Jl. Kapuk Kamal Indah 1 No.Kav 15 - 17', 'https://www.google.com/maps/place/Rackindo+Setara+Perkasa+(GRAVER)/@-6.1014157,106.7102402,19z/data=!4m5!3m4!1s0x2e6a02d9ade5f543:0x8333b9a842148012!8m2!3d-6.1013744!4d106.7094539', '021 5595 1295', '+6285810100913', '021 2255 6109', 'rackindo@gmail.com', 'favicon.png', '');
 
 -- --------------------------------------------------------
 
@@ -184,9 +191,17 @@ INSERT INTO `product` (`prodid`, `prodnama`, `prodtype`, `prodkat`, `prodbranch`
 CREATE TABLE `sosmed` (
   `sosmedid` int(11) UNSIGNED NOT NULL,
   `sosmedlink` text NOT NULL,
+  `sosmednama` varchar(100) NOT NULL,
   `sosmedicon` varchar(50) NOT NULL,
   `sosmedperuid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `sosmed`
+--
+
+INSERT INTO `sosmed` (`sosmedid`, `sosmedlink`, `sosmednama`, `sosmedicon`, `sosmedperuid`) VALUES
+(1, 'https://www.instagram.com/rackindo.idn/?hl=id', '@rackindo.idn', '<i class=\'fab fa-instagram\'></i>', 1);
 
 -- --------------------------------------------------------
 
@@ -200,6 +215,13 @@ CREATE TABLE `users` (
   `userpassword` varchar(50) NOT NULL,
   `userlevel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`userid`, `usernama`, `userpassword`, `userlevel`) VALUES
+('sutino.skom@gmail.com', 'Sutino', '123', 1);
 
 --
 -- Indexes for dumped tables
@@ -287,7 +309,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `levels`
 --
 ALTER TABLE `levels`
-  MODIFY `levelid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `levelid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -311,7 +333,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT untuk tabel `sosmed`
 --
 ALTER TABLE `sosmed`
-  MODIFY `sosmedid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `sosmedid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
