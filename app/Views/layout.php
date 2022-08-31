@@ -26,9 +26,15 @@
 
     <link rel="stylesheet" href="<?= base_url() ?>/plugins/sweetalert2/sweetalert2.min.css">
     <script src="<?= base_url() ?>/plugins/sweetalert2/sweetalert2.all.min.js"></script>
-
-
-
+    <style>
+        body {
+            user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+        }
+    </style>
 
 </head>
 
@@ -305,7 +311,7 @@
 
             $('#closeModal').click(function(e) {
                 e.preventDefault();
-                window.location.reload();
+                $('#modalLogin').modal('hide');
             });
 
             $('#logout').click(function(e) {
