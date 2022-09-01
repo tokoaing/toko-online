@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Agu 2022 pada 12.52
+-- Waktu pembuatan: 01 Sep 2022 pada 12.48
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.28
 
@@ -63,7 +63,9 @@ CREATE TABLE `branch` (
 --
 
 INSERT INTO `branch` (`branchid`, `branchnama`, `branchgambar`) VALUES
-(1, 'Graver', '');
+(1, 'GRAVER', 'logo-graver.jpg'),
+(2, 'BENEFIT', 'logo-benefit.jpg'),
+(3, 'POPULAR', 'logo-popular.png');
 
 -- --------------------------------------------------------
 
@@ -185,6 +187,27 @@ INSERT INTO `product` (`prodid`, `prodnama`, `prodtype`, `prodkat`, `prodbranch`
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `productdetail`
+--
+
+CREATE TABLE `productdetail` (
+  `detid` int(11) NOT NULL,
+  `detprodid` int(11) NOT NULL,
+  `detprofoto` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `productdetail`
+--
+
+INSERT INTO `productdetail` (`detid`, `detprodid`, `detprofoto`) VALUES
+(1, 1, 'CRD 2182.jpg'),
+(2, 1, 'CRD 2186.jpg'),
+(3, 1, 'CRD 2189.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `sosmed`
 --
 
@@ -272,6 +295,12 @@ ALTER TABLE `product`
   ADD KEY `branch` (`prodbranch`);
 
 --
+-- Indeks untuk tabel `productdetail`
+--
+ALTER TABLE `productdetail`
+  ADD PRIMARY KEY (`detid`);
+
+--
 -- Indeks untuk tabel `sosmed`
 --
 ALTER TABLE `sosmed`
@@ -297,7 +326,7 @@ ALTER TABLE `baner`
 -- AUTO_INCREMENT untuk tabel `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `branchid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `branchid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -328,6 +357,12 @@ ALTER TABLE `perusahaan`
 --
 ALTER TABLE `product`
   MODIFY `prodid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `productdetail`
+--
+ALTER TABLE `productdetail`
+  MODIFY `detid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `sosmed`

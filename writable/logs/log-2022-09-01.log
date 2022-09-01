@@ -1,0 +1,59 @@
+CRITICAL - 2022-09-01 01:31:10 --> Undefined index: branchnama
+in APPPATH\Controllers\Home.php on line 177.
+ 1 APPPATH\Controllers\Home.php(177): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: branchnama', 'APPPATH\\Controllers\\Home.php', 177, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-01 01:39:36 --> Undefined variable: rowproduct
+in APPPATH\Views\katalogdetail.php on line 121.
+ 1 APPPATH\Views\katalogdetail.php(121): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: rowproduct', 'APPPATH\\Views\\katalogdetail.php', 121, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\katalogdetail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogdetail', [], true)
+ 5 APPPATH\Controllers\Home.php(205): view('katalogdetail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-01 01:49:36 --> Too few arguments to function App\Controllers\Home::katalogdetail(), 0 passed in C:\xampp\htdocs\toko-online\system\CodeIgniter.php on line 904 and exactly 1 expected
+in APPPATH\Controllers\Home.php on line 139.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-01 02:25:46 --> Call to undefined function App\Controllers\decrypt_url()
+in APPPATH\Controllers\Home.php on line 145.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-01 02:26:07 --> Call to undefined function App\Controllers\decrypt_url()
+in APPPATH\Controllers\Home.php on line 145.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-01 03:38:33 --> Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Home.php on line 155.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('356a192b7913b04c54574d18c28d46e6395428ab')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-01 03:39:02 --> Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Home.php on line 155.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('356a192b7913b04c54574d18c28d46e6395428ab')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-01 03:50:42 --> Undefined variable: rowproduct
+in APPPATH\Views\katalogdetail.php on line 121.
+ 1 APPPATH\Views\katalogdetail.php(121): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: rowproduct', 'APPPATH\\Views\\katalogdetail.php', 121, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\katalogdetail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogdetail', [], true)
+ 5 APPPATH\Controllers\Home.php(209): view('katalogdetail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('356a192b7913b04c54574d18c28d46e6395428ab')
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

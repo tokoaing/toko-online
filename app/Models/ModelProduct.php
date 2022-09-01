@@ -11,4 +11,13 @@ class ModelProduct extends Model
     protected $allowedFields    = [
         'prodnama', 'prodtype', 'prodkat', 'prodbranch', 'proddeskripsi', 'prodharga', 'prodstock', 'prodgambar'
     ];
+
+
+
+    public function cekProduct($id)
+    {
+        return $this->table('product')->getWhere([
+            'sha1(prodid)' => $id
+        ]);
+    }
 }

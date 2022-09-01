@@ -1,0 +1,99 @@
+CRITICAL - 2022-08-31 23:26:17 --> Cannot use object of type App\Models\ModelProduct as array
+in APPPATH\Controllers\Home.php on line 160.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:27:41 --> Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Home.php on line 160.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:27:42 --> Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Home.php on line 160.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:32:05 --> Undefined variable: pronama
+in APPPATH\Views\katalogdetail.php on line 110.
+ 1 APPPATH\Views\katalogdetail.php(110): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: pronama', 'APPPATH\\Views\\katalogdetail.php', 110, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\katalogdetail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogdetail', [], true)
+ 5 APPPATH\Controllers\Home.php(193): view('katalogdetail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('1,')
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:37:14 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'jquery-1.11.0.min.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:37:14 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'jquery-migrate-1.2.1.min.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:37:14 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'slick.min.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:37:14 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'custom.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:37:14 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'templatemo.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:38:24 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'jquery-1.11.0.min.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:38:24 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'jquery-migrate-1.2.1.min.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:38:24 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'custom.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:38:24 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'slick.min.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-08-31 23:38:24 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 160.
+ 1 APPPATH\Controllers\Home.php(160): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 160, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('FCPATH\\assets', 'js', 'templatemo.js')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

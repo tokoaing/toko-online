@@ -8,13 +8,9 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/assets/img/<?= $peruicon ?>">
 
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/templatemo.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/fontawesome.min.css">
 
     <!-- icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,8 +20,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="<?= base_url() ?>/plugins/sweetalert2/sweetalert2.min.css">
-    <script src="<?= base_url() ?>/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/templatemo.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/custom.css">
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/slick-theme.css">
+
+    <link rel="stylesheet" href="<?= base_url() ?>/package/dist/sweetalert2.min.css">
+    <script src="<?= base_url() ?>/package/dist/sweetalert2.all.min.js"></script>
     <style>
         body {
             user-select: none;
@@ -82,10 +86,10 @@
                             <a class="nav-link" href="<?= base_url() ?>/home/katalog">Katalog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="<?= base_url() ?>/home/about">Tentang kami</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="<?= base_url() ?>/home/contact">Hubungi Kami</a>
                         </li>
                         <li class="nav-item">
 
@@ -139,7 +143,7 @@
                             <div class="invalid-feedback errorPassword"></div>
                         </div>
                         <div class="form-group">
-                            <label for="formLogin">Belum punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalDaftar">disini</a></label>
+                            <label for="formLogin">Belum punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalDaftar" id="tombolDaftar">disini</a></label>
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
@@ -165,12 +169,7 @@
         </div>
     </div>
 
-
-
-
     <?= $this->renderSection('isi'); ?>
-
-
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -195,19 +194,15 @@
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Produk</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                        <?php foreach ($databranch as $rowDataBranch) : ?>
+                            <li><a class="text-decoration-none" href="#"><?= ucwords(strtolower($rowDataBranch['branchnama'])) ?></a></li>
+                        <?php endforeach ?>
                     </ul>
                 </div>
 
-                <div class="col-md-4 pt-5">
+                <!-- <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">Home</a></li>
@@ -216,7 +211,7 @@
                         <li><a class="text-decoration-none" href="#">FAQs</a></li>
                         <li><a class="text-decoration-none" href="#">Contact</a></li>
                     </ul>
-                </div>
+                </div> -->
 
             </div>
 
@@ -246,8 +241,7 @@
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name
-                            | Designed by <a rel="sponsored" href="<?= base_url() ?>" target="_blank">TemplateMo</a>
+                            Copyright &copy; 2021 Graver Furniture
                         </p>
                     </div>
                 </div>
@@ -256,6 +250,16 @@
 
     </footer>
     <!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="<?= base_url() ?>/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/templatemo.js"></script>
+    <script src="<?= base_url() ?>/assets/js/custom.js"></script>
+    <!-- End Script -->
+
+    <!-- Start Slider Script -->
+    <script src="<?= base_url() ?>/assets/js/slick.min.js"></script>
 
 
     <script>
@@ -314,6 +318,11 @@
                 $('#modalLogin').modal('hide');
             });
 
+            $('#tombolDaftar').click(function(e) {
+                e.preventDefault();
+                $('#modalLogin').modal('hide');
+            });
+
             $('#logout').click(function(e) {
                 e.preventDefault();
                 $.ajax({
@@ -350,6 +359,36 @@
                     document.body.style.paddingTop = '0';
                 }
             });
+        });
+
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
         });
     </script>
 

@@ -3,20 +3,30 @@
 namespace App\Controllers;
 
 use App\Models\ModelBaner;
+use App\Models\ModelBranch;
 use App\Models\ModelLevels;
 use App\Models\ModelPerusahaan;
 use App\Models\ModelProduct;
+use App\Models\ModelProductDetail;
 use App\Models\ModelUsers;
 use Config\Services;
 
 class Home extends BaseController
 {
+    public function __contruct()
+    {
+        $autoload['helper'] = array('security');
+    }
 
     public function index()
     {
         // menampilkan data perusahaan
         $modelPerusahaan = new ModelPerusahaan();
         $rowPeru = $modelPerusahaan->find(1);
+
+        // menampilkan branch
+        $modelBranch = new ModelBranch();
+        $cekBranch = $modelBranch->findAll();
 
         if ($rowPeru > 0) {
             $data = [
@@ -30,6 +40,7 @@ class Home extends BaseController
                 'peruemail'         => $rowPeru['peruemail'],
                 'peruicon'          => $rowPeru['peruicon'],
                 'perufoto'          => $rowPeru['perufoto'],
+                'databranch'        => $cekBranch,
             ];
         } else {
             $data = [
@@ -43,6 +54,7 @@ class Home extends BaseController
                 'peruemail'         => 'Default',
                 'peruicon'          => '',
                 'perufoto'          => 'Default',
+                'databranch'        => 'Default',
             ];
         }
 
@@ -79,6 +91,10 @@ class Home extends BaseController
         $modelPerusahaan = new ModelPerusahaan();
         $rowPeru = $modelPerusahaan->find(1);
 
+        // menampilkan branch
+        $modelBranch = new ModelBranch();
+        $cekBranch = $modelBranch->findAll();
+
 
         if ($rowPeru > 0) {
             $data = [
@@ -92,6 +108,7 @@ class Home extends BaseController
                 'peruemail'         => $rowPeru['peruemail'],
                 'peruicon'          => $rowPeru['peruicon'],
                 'perufoto'          => $rowPeru['perufoto'],
+                'databranch'        => $cekBranch,
             ];
         } else {
             $data = [
@@ -105,6 +122,7 @@ class Home extends BaseController
                 'peruemail'         => 'Default',
                 'peruicon'          => '',
                 'perufoto'          => 'Default',
+                'databranch'        => 'Default',
             ];
         }
 
@@ -131,6 +149,171 @@ class Home extends BaseController
         } else {
             exit('Maaf, gagal menampilkan data');
         }
+    }
+
+
+    public function katalogdetail($id)
+    {
+        // menampilkan data perusahaan
+        $modelPerusahaan = new ModelPerusahaan();
+        $rowPeru = $modelPerusahaan->find(1);
+
+        $modelProduct = new ModelProduct();
+        $rowProduct = $modelProduct->cekProduct($id)->getRowArray();
+
+        $modelProductDetail = new ModelProductDetail();
+
+        $modelBranch = new ModelBranch();
+        $rowBranch = $modelBranch->find($rowProduct['prodbranch']);
+
+
+        $cekBranch = $modelBranch->findAll();
+
+
+
+        if ($rowPeru > 0) {
+            $data = [
+                'peruid'            => $rowPeru['peruid'],
+                'perunama'          => $rowPeru['perunama'],
+                'perualamat'        => $rowPeru['perualamat'],
+                'perualamatlink'    => $rowPeru['perualamatlink'],
+                'peruwa'            => $rowPeru['peruwa'],
+                'perutelp'          => $rowPeru['perutelp'],
+                'perufax'           => $rowPeru['perufax'],
+                'peruemail'         => $rowPeru['peruemail'],
+                'peruicon'          => $rowPeru['peruicon'],
+                'perufoto'          => $rowPeru['perufoto'],
+                'databranch'        => $cekBranch,
+                'prodid'            => $rowProduct['prodid'],
+                'prodnama'          => $rowProduct['prodnama'],
+                'prodtype'          => $rowProduct['prodtype'],
+                'prodkat'           => $rowProduct['prodkat'],
+                'prodbranch'        => $rowProduct['prodbranch'],
+                'proddeskripsi'     => $rowProduct['proddeskripsi'],
+                'prodharga'         => $rowProduct['prodharga'],
+                'prodstock'         => $rowProduct['prodstock'],
+                'prodgambar'        => $rowProduct['prodgambar'],
+                'productDetail'     => $modelProductDetail->productDetail($rowProduct['prodid']),
+                'branchnama'        => $rowBranch['branchnama'],
+            ];
+        } else {
+            $data = [
+                'peruid'            => 'Default',
+                'perunama'          => 'Default',
+                'perualamat'        => 'Default',
+                'perualamatlink'    => 'Default',
+                'peruwa'            => 'Default',
+                'perutelp'          => 'Default',
+                'perufax'           => 'Default',
+                'peruemail'         => 'Default',
+                'peruicon'          => '',
+                'perufoto'          => 'Default',
+                'databranch'        => 'Default',
+                'prodid'            => 'Default',
+                'prodnama'          => 'Default',
+                'prodtype'          => 'Default',
+                'prodkat'           => 'Default',
+                'prodbranch'        => 'Default',
+                'proddeskripsi'     => 'Default',
+                'prodharga'         => 'Default',
+                'prodstock'         => 'Default',
+                'prodgambar'        => 'Default',
+                'productDetail'     => 'Default',
+                'branchnama'        => '',
+            ];
+        }
+
+        return view('katalogdetail', $data);
+    }
+
+    // tentang kami
+    public function about()
+    {
+        // menampilkan data perusahaan
+        $modelPerusahaan = new ModelPerusahaan();
+        $rowPeru = $modelPerusahaan->find(1);
+
+        // menampilkan branch
+        $modelBranch = new ModelBranch();
+        $cekBranch = $modelBranch->findAll();
+
+
+        if ($rowPeru > 0) {
+            $data = [
+                'peruid'            => $rowPeru['peruid'],
+                'perunama'          => $rowPeru['perunama'],
+                'perualamat'        => $rowPeru['perualamat'],
+                'perualamatlink'    => $rowPeru['perualamatlink'],
+                'peruwa'            => $rowPeru['peruwa'],
+                'perutelp'          => $rowPeru['perutelp'],
+                'perufax'           => $rowPeru['perufax'],
+                'peruemail'         => $rowPeru['peruemail'],
+                'peruicon'          => $rowPeru['peruicon'],
+                'perufoto'          => $rowPeru['perufoto'],
+                'databranch'        => $cekBranch,
+            ];
+        } else {
+            $data = [
+                'peruid'            => 'Default',
+                'perunama'          => 'Default',
+                'perualamat'        => 'Default',
+                'perualamatlink'    => 'Default',
+                'peruwa'            => 'Default',
+                'perutelp'          => 'Default',
+                'perufax'           => 'Default',
+                'peruemail'         => 'Default',
+                'peruicon'          => '',
+                'perufoto'          => 'Default',
+                'databranch'        => 'Default',
+            ];
+        }
+
+        return view('about', $data);
+    }
+
+    // hubungi kami
+    public function contact()
+    {
+        // menampilkan data perusahaan
+        $modelPerusahaan = new ModelPerusahaan();
+        $rowPeru = $modelPerusahaan->find(1);
+
+        // menampilkan branch
+        $modelBranch = new ModelBranch();
+        $cekBranch = $modelBranch->findAll();
+
+
+        if ($rowPeru > 0) {
+            $data = [
+                'peruid'            => $rowPeru['peruid'],
+                'perunama'          => $rowPeru['perunama'],
+                'perualamat'        => $rowPeru['perualamat'],
+                'perualamatlink'    => $rowPeru['perualamatlink'],
+                'peruwa'            => $rowPeru['peruwa'],
+                'perutelp'          => $rowPeru['perutelp'],
+                'perufax'           => $rowPeru['perufax'],
+                'peruemail'         => $rowPeru['peruemail'],
+                'peruicon'          => $rowPeru['peruicon'],
+                'perufoto'          => $rowPeru['perufoto'],
+                'databranch'        => $cekBranch,
+            ];
+        } else {
+            $data = [
+                'peruid'            => 'Default',
+                'perunama'          => 'Default',
+                'perualamat'        => 'Default',
+                'perualamatlink'    => 'Default',
+                'peruwa'            => 'Default',
+                'perutelp'          => 'Default',
+                'perufax'           => 'Default',
+                'peruemail'         => 'Default',
+                'peruicon'          => '',
+                'perufoto'          => 'Default',
+                'databranch'        => 'Default',
+            ];
+        }
+
+        return view('contact', $data);
     }
 
     //form Login
