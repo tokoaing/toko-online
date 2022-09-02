@@ -25,6 +25,40 @@ class Users extends Migration
                 'type'       => 'INT',
                 'constraint'     => 11,
             ],
+            'usergender' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '15',
+            ],
+            'userlahir' => [
+                'type'       => 'DATE',
+            ],
+            'useralamat' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'userrt' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '5',
+            ],
+            'userrw' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '5',
+            ],
+            'useralamatid' => [
+                'type'       => 'INT',
+                'constraint'     => 11,
+            ],
+            'usertelp' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '30',
+            ],
+            'userfoto' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'usermap' => [
+                'type'       => 'TEXT',
+            ],
         ]);
         $this->forge->addKey('userid', true);
         $this->forge->createTable('users');

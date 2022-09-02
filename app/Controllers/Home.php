@@ -13,11 +13,6 @@ use Config\Services;
 
 class Home extends BaseController
 {
-    public function __contruct()
-    {
-        $autoload['helper'] = array('security');
-    }
-
     public function index()
     {
         // menampilkan data perusahaan

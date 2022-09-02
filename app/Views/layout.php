@@ -86,18 +86,15 @@
                             <a class="nav-link" href="<?= base_url() ?>/home/katalog">Katalog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url() ?>/home/about">Tentang kami</a>
+                            <a class="nav-link" href="<?= base_url() ?>/home/about">Tentang</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url() ?>/home/contact">Hubungi Kami</a>
-                        </li>
-                        <li class="nav-item">
-
+                            <a class="nav-link" href="<?= base_url() ?>/home/contact">Bantuan</a>
                         </li>
                         <?php
                         if (session()->namauser) {
                         ?>
-                            <li class="nav-item"><a class="nav-link" href="<?= site_url('profil/index/' . session()->iduser) ?>"><?= session()->namauser ?></a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('profil/index/' . sha1(session()->iduser)) ?>"><?= session()->namauser ?></a></li>
                             <li class="nav-item">
                                 <button type="button" class="btn btn-outline-danger" id="logout">Logout</button>
                             </li>
