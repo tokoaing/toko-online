@@ -83,7 +83,19 @@
                 }
             })
         } else {
-            alert(namauser);
+            $.ajax({
+                url: "<?= base_url() ?>/home/modalTambahKeranjang/" + id,
+                dataType: "json",
+                success: function(response) {
+                    if (response.data) {
+                        $('.viewmodal').html(response.data).show();
+                        $('#modalTambahKeranjang').modal('show');
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + '\n' + thrownError);
+                }
+            });
         }
     }
 </script>

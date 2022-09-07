@@ -311,6 +311,29 @@ class Home extends BaseController
         return view('contact', $data);
     }
 
+    // modal tambah keranjang
+    function modalTambahKeranjang($id)
+    {
+        if ($this->request->isAJAX()) {
+            $modelProduct = new ModelProduct();
+            $dataProduct = $modelProduct->find($id);
+
+
+
+            $data = [
+                'tampilproduct' => $dataProduct,
+            ];
+
+            $json = [
+                'data' => view('modaltambahkeranjang', $data)
+            ];
+
+            echo json_encode($json);
+        } else {
+            exit('Maaf, gagal menampilkan data');
+        }
+    }
+
     //form Login
     function login()
     {

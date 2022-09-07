@@ -1,0 +1,34 @@
+CRITICAL - 2022-09-07 01:06:37 --> Undefined variable: rowproduct
+in APPPATH\Views\modaltambahkeranjang.php on line 16.
+ 1 APPPATH\Views\modaltambahkeranjang.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: rowproduct', 'APPPATH\\Views\\modaltambahkeranjang.php', 16, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\modaltambahkeranjang.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('modaltambahkeranjang', [], true)
+ 5 APPPATH\Controllers\Home.php(328): view('modaltambahkeranjang', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->modalTambahKeranjang('1,Sutino')
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 01:09:36 --> Undefined variable: prodid
+in APPPATH\Views\modaltambahkeranjang.php on line 26.
+ 1 APPPATH\Views\modaltambahkeranjang.php(26): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: prodid', 'APPPATH\\Views\\modaltambahkeranjang.php', 26, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\modaltambahkeranjang.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('modaltambahkeranjang', [], true)
+ 5 APPPATH\Controllers\Home.php(328): view('modaltambahkeranjang', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->modalTambahKeranjang('1,Sutino')
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 02:00:44 --> Undefined variable: perunama
+in APPPATH\Views\layout.php on line 5.
+ 1 APPPATH\Views\layout.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: perunama', 'APPPATH\\Views\\layout.php', 5, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\layout.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('layout', [], true)
+ 5 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('modaltambahkeranjang', [], true)
+ 6 APPPATH\Controllers\Home.php(328): view('modaltambahkeranjang', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->modalTambahKeranjang('1,Sutino')
+ 8 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
