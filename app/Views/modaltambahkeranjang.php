@@ -1,3 +1,16 @@
+<style>
+    .center {
+        width: 150px;
+        margin: 40px auto;
+
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
 <!-- Modal -->
 <div class="modal fade" id="modalTambahKeranjang" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalTambahKeranjangLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -15,31 +28,34 @@
                     <div class="card-body">
                         <strong><?= $tampilproduct['prodnama'] ?></strong><br>
                         <?= $tampilproduct['prodtype'] ?>
-                        <form>
-                            <div class="form-group row">
 
-                                <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
-                                <div class="col-sm-5">
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="jml">
-                                                <span class="glyphicon glyphicon-minus"><i class="fa fa-minus"></i></span>
-                                            </button>
-                                        </span>
-                                        <input type="text" name="jml" class="form-control input-number" value="1" min="1" max="1000">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="jml">
-                                                <span class="glyphicon glyphicon-plus"><i class="fa fa-plus"></i></span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <input type="hidden" class="form-control" name="userid" id="userid" value="<?= session()->iduser ?>">
+                        <div class="form-group row">
+
+                            <input type="hidden" class="form-control" name="kerbrgid" id="kerbrgid" value="<?= $tampilproduct['prodid'] ?>">
+                            <input type="hidden" class="form-control" name="keruser" id="keruser" value="<?= session()->iduser ?>">
+                            <input type="hidden" class="form-control" name="kertanggal" id="kertanggal" value="<?= date("Y-m-d") ?>">
+
+                            <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="kerjml">
+                                            <span class="glyphicon glyphicon-minus"><i class="fa fa-minus"></i></span>
+                                        </button>
+                                    </span>
+                                    <input type="text" name="kerjml" id="kerjml" class="form-control input-number" value="1" min="1" max="1000">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="kerjml">
+                                            <span class="glyphicon glyphicon-plus"><i class="fa fa-plus"></i></span>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <button type="submit" class="btn btn-block btn-success btn-lg">Tambah ke Keranjang</button>
-                            </div>
-                        </form>
+                        </div>
+                        <div class="form-group row">
+                            <button type="submit" id="tombolTambahKeranjang" class="btn btn-block btn-success btn-lg">Tambah ke Keranjang</button>
+                        </div>
+
                     </div>
                 </div>
 
@@ -49,32 +65,54 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#jml').focus();
-    });
-
     $('#closeModalKeranjang').click(function(e) {
         e.preventDefault();
         $('#modalTambahKeranjang').modal('hide');
+        window.location.reload();
+    });
+
+
+    $('#tombolTambahKeranjang').click(function(e) {
+        e.preventDefault();
+        let kertanggal = $('#kertanggal').val();
+        let kerbrgid = $('#kerbrgid').val();
+        let kerjml = $('#kerjml').val();
+        let keruser = $('#keruser').val();
+
+        $.ajax({
+            type: "post",
+            url: "<?= base_url() ?>/home/simpanKeranjang",
+            data: {
+                kertanggal: kertanggal,
+                kerbrgid: kerbrgid,
+                kerjml: kerjml,
+                keruser: keruser,
+            },
+            dataType: "json",
+            success: function(response) {
+
+                if (response.sukses) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: response.sukses
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        }
+                    })
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + '\n' + thrownError);
+            }
+        });
     });
 </script>
 
-<style>
-    .center {
-        width: 150px;
-        margin: 40px auto;
-
-    }
-
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-</style>
 
 
-
+<!-- untuk tombol tambah dan kurang -->
 <script>
     $('.btn-number').click(function(e) {
         e.preventDefault();

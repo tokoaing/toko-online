@@ -32,3 +32,97 @@ in APPPATH\Views\layout.php on line 5.
  8 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 21:45:50 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 351.
+ 1 APPPATH\Controllers\Home.php(351): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 351, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 21:46:26 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 350.
+ 1 APPPATH\Controllers\Home.php(350): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 350, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 21:53:19 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 350.
+ 1 APPPATH\Controllers\Home.php(350): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 350, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 21:57:52 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 350.
+ 1 APPPATH\Controllers\Home.php(350): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 350, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 21:59:53 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 350.
+ 1 APPPATH\Controllers\Home.php(350): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 350, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 22:01:46 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 350.
+ 1 APPPATH\Controllers\Home.php(350): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 350, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 22:04:28 --> Call to undefined method App\Models\ModelKeranjang::getRowArray
+in SYSTEMPATH\Model.php on line 773.
+ 1 APPPATH\Controllers\Home.php(349): CodeIgniter\Model->__call('getRowArray', [])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 22:05:30 --> Call to undefined method App\Models\ModelKeranjang::getRowArray
+in SYSTEMPATH\Model.php on line 773.
+ 1 APPPATH\Controllers\Home.php(349): CodeIgniter\Model->__call('getRowArray', [])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 22:05:43 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 350.
+ 1 APPPATH\Controllers\Home.php(350): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 350, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 22:06:48 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Home.php on line 350.
+ 1 APPPATH\Controllers\Home.php(350): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Home.php', 350, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 22:07:05 --> Undefined variable: modelKeranjang
+in APPPATH\Controllers\Home.php on line 371.
+ 1 APPPATH\Controllers\Home.php(371): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: modelKeranjang', 'APPPATH\\Controllers\\Home.php', 371, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->simpanKeranjang()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 22:42:33 --> Undefined variable: tampilproduct
+in APPPATH\Views\katalogdetail.php on line 108.
+ 1 APPPATH\Views\katalogdetail.php(108): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: tampilproduct', 'APPPATH\\Views\\katalogdetail.php', 108, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\katalogdetail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1137): CodeIgniter\View\View->render('katalogdetail', [], true)
+ 5 APPPATH\Controllers\Home.php(222): view('katalogdetail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->katalogdetail('356a192b7913b04c54574d18c28d46e6395428ab')
+ 7 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-07 23:36:27 --> Call to undefined method CodeIgniter\Email\Email::setForm()
+in APPPATH\Controllers\Home.php on line 495.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->sendEmail()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

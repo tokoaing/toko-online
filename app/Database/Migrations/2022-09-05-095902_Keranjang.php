@@ -15,10 +15,6 @@ class Keranjang extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'kernomor' => [
-                'type'       => 'CHAR',
-                'constraint' => '50',
-            ],
             'kertanggal' => [
                 'type'       => 'DATE',
             ],
@@ -29,9 +25,6 @@ class Keranjang extends Migration
             'kerjml' => [
                 'type'       => 'INT',
                 'constraint'     => 11,
-            ],
-            'kersubtotal' => [
-                'type'       => 'DOUBLE',
             ],
             'keruser' => [
                 'type'       => 'VARCHAR',

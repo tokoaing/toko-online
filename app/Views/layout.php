@@ -91,25 +91,41 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url() ?>/home/contact">Bantuan</a>
                         </li>
-                        <?php
-                        if (session()->namauser) {
-                        ?>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+
+                    <?php
+                    if (session()->namauser) {
+                    ?>
+                        <a class="nav-icon position-relative text-decoration-none" href="#">
+                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" id="totalKeranjang"></span>
+                        </a>
+
+                        <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+
+                            <input type="hidden" id="iduser" value="<?= session()->iduser ?>">
+
                             <li class="nav-item"><a class="nav-link" href="<?= site_url('profil/index/' . sha1(session()->iduser)) ?>"><?= session()->namauser ?></a></li>
                             <li class="nav-item">
                                 <button type="button" class="btn btn-outline-danger" id="logout">Logout</button>
                             </li>
-                        <?php
-                        } else {
-                        ?>
+                        </ul>
+                    <?php
+                    } else {
+                    ?>
+                        <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                             <li class="nav-item">
                                 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalLogin">
                                     Login
                                 </button>
                             </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
+
+                        </ul>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -128,7 +144,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('home/login') ?>" class="formsimpan">
+                    <form action="<?= base_url('home/login') ?>" class="formlogin">
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
@@ -160,6 +176,41 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
+                    <form action="<?= base_url('home/daftarUser') ?>" class="formdaftar">
+
+                        <div class="form-group">
+                            <label for="">Nama Lengkap</label>
+                            <input type="text" name="usernama" id="usernama" class="form-control" placeholder="Masukan Nama Lengkap...">
+                            <div class="invalid-feedback errorUserNama"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">User ID</label>
+                            <input type="text" name="userid" id="userid" class="form-control" placeholder="Masukan User Name...">
+                            <div class="invalid-feedback errorUserID"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" name="userpassword" id="userpassword" class="form-control" placeholder="Masukan Password...">
+                            <div class="invalid-feedback errorUserPassword"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formLogin">Sudah punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalLogin" id="tombolLogin">disini</a></label>
+                        </div>
+
+                        <div class="row px-3 mb-4">
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="hidden" name="userlevel" value="2" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 px-3"> <button type="submit" class="btn btn-primary btn-block text-center">Daftar</button> </div>
+
+
+                    </form>
 
                 </div>
             </div>
@@ -261,7 +312,109 @@
 
     <script>
         $(document).ready(function() {
-            $('.formsimpan').submit(function(e) {
+            $('.formdaftar').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "post",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.error) {
+                            let err = response.error;
+
+                            if (err.errUserNama) {
+                                $('#usernama').addClass('is-invalid');
+                                $('.errorUserNama').html(err.errUserNama);
+                            } else {
+                                $('#usernama').removeClass('is-invalid');
+                                $('#usernama').addClass('is-valid');
+                            }
+
+                            if (err.errUserID) {
+                                $('#userid').addClass('is-invalid');
+                                $('.errorUserID').html(err.errUserID);
+                            } else {
+                                $('#userid').removeClass('is-invalid');
+                                $('#userid').addClass('is-valid');
+                            }
+
+                            if (err.errUserPassword) {
+                                $('#userpassword').addClass('is-invalid');
+                                $('.errorUserPassword').html(err.errUserPassword);
+                            } else {
+                                $('#userpassword').removeClass('is-invalid');
+                                $('#userpassword').addClass('is-valid');
+                            }
+                        }
+
+                        if (response.sukses) {
+
+                            let data = response.sukses;
+
+                            let userid = data.userid;
+                            let usernama = data.usernama;
+
+                            $.ajax({
+                                type: "post",
+                                url: "<?= base_url() ?>/home/kirimverifikasi",
+                                data: {
+                                    userid: userid,
+                                    usernama: usernama
+                                },
+                                dataType: "json",
+                                success: function(response) {
+                                    if (response.berhasil) {
+                                        Swal.fire(
+                                            'Berhasil',
+                                            response.berhasil,
+                                            'success'
+                                        ).then((result) => {
+                                            window.location.reload();
+                                        })
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + '\n' + thrownError);
+                    }
+                });
+
+                return false;
+            });
+
+        });
+
+
+        // untuk menampilkan total keranjang
+        function ambilTotalKeranjang() {
+            let iduser = $('#iduser').val();
+            $.ajax({
+                type: "post",
+                url: "<?= base_url() ?>/home/ambilTotalKeranjang",
+                data: {
+                    iduser: iduser
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('#totalKeranjang').html(response.totalkeranjang);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + '\n' + thrownError);
+                }
+            });
+        }
+
+
+
+        $(document).ready(function() {
+            ambilTotalKeranjang();
+
+
+            $('.formlogin').submit(function(e) {
                 e.preventDefault();
 
                 $.ajax({
@@ -318,6 +471,11 @@
             $('#tombolDaftar').click(function(e) {
                 e.preventDefault();
                 $('#modalLogin').modal('hide');
+            });
+
+            $('#tombolLogin').click(function(e) {
+                e.preventDefault();
+                $('#modalDaftar').modal('hide');
             });
 
             $('#logout').click(function(e) {
