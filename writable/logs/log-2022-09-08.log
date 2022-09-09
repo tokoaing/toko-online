@@ -639,3 +639,15 @@ in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
 10 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
 11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 12 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-08 21:36:56 --> Too few arguments to function App\Controllers\Home::ubahsandi(), 0 passed in C:\xampp\htdocs\toko-online\system\CodeIgniter.php on line 904 and exactly 1 expected
+in APPPATH\Controllers\Home.php on line 733.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->ubahsandi()
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-09-08 22:07:15 --> Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Home.php on line 739.
+ 1 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->ubahsandi('a8e80a4166972fd07b1eb9ab7ebc2d567f8ba952')
+ 2 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

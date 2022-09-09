@@ -20,7 +20,7 @@ class Home extends BaseController
         $this->email = \Config\Services::email();
     }
 
-
+    // menampilkan halaman utaman
     public function index()
     {
         // menampilkan data perusahaan
@@ -64,6 +64,7 @@ class Home extends BaseController
         return view('dashboard', $data);
     }
 
+    // menampilkan data baner
     function tampilBaner()
     {
         if ($this->request->isAJAX()) {
@@ -88,6 +89,7 @@ class Home extends BaseController
         }
     }
 
+    // menampilkan halaman katalog
     public function katalog()
     {
         // menampilkan data perusahaan
@@ -132,6 +134,7 @@ class Home extends BaseController
         return view('katalog', $data);
     }
 
+    // menampilkan data katalog
     function katalogTampil()
     {
         if ($this->request->isAJAX()) {
@@ -353,7 +356,7 @@ class Home extends BaseController
 
 
             $modelKeranjang = new ModelKeranjang();
-            $cekKeranjang = $modelKeranjang->cekKeranjang($kerbrgid)->getRowArray();
+            $cekKeranjang = $modelKeranjang->cekKeranjang($kerbrgid, $keruser)->getRowArray();
 
 
             if ($cekKeranjang > 0) {
@@ -402,6 +405,83 @@ class Home extends BaseController
         }
     }
 
+
+    // menampilkan halaman keranjang
+    public function keranjang($user)
+    {
+        // menampilkan data perusahaan
+        $modelPerusahaan = new ModelPerusahaan();
+        $rowPeru = $modelPerusahaan->find(1);
+
+        // menampilkan branch
+        $modelBranch = new ModelBranch();
+        $cekBranch = $modelBranch->findAll();
+
+        // menampilakan user
+        $modelUser = new ModelUsers();
+        $rowUser = $modelUser->cekUser($user);
+
+
+        // menampilakan keranjang
+        $modelKeranjang = new ModelKeranjang();
+        $rowKeranjang = $modelKeranjang->cekBelanja($user);
+
+
+
+        if ($rowPeru > 0) {
+            $data = [
+                'peruid'            => $rowPeru['peruid'],
+                'perunama'          => $rowPeru['perunama'],
+                'perualamat'        => $rowPeru['perualamat'],
+                'perualamatlink'    => $rowPeru['perualamatlink'],
+                'peruwa'            => $rowPeru['peruwa'],
+                'perutelp'          => $rowPeru['perutelp'],
+                'perufax'           => $rowPeru['perufax'],
+                'peruemail'         => $rowPeru['peruemail'],
+                'peruicon'          => $rowPeru['peruicon'],
+                'perufoto'          => $rowPeru['perufoto'],
+                'databranch'        => $cekBranch,
+                'datauser'          => $rowUser,
+                'datakeranjang'     => $rowKeranjang,
+            ];
+        } else {
+            $data = [
+                'peruid'            => 'Default',
+                'perunama'          => 'Default',
+                'perualamat'        => 'Default',
+                'perualamatlink'    => 'Default',
+                'peruwa'            => 'Default',
+                'perutelp'          => 'Default',
+                'perufax'           => 'Default',
+                'peruemail'         => 'Default',
+                'peruicon'          => '',
+                'perufoto'          => 'Default',
+                'databranch'        => 'Default',
+                'datauser'          => 'Default',
+                'datakeranjang'     => 'Default',
+            ];
+        }
+
+        return view('keranjang', $data);
+    }
+
+    //menghapus item keranjang
+    public function hapusItemKeranjang($kerid)
+    {
+        if ($this->request->isAJAX()) {
+            $modelKeranjang = new ModelKeranjang();
+            $modelKeranjang->where(['sha1(kerid)' => $kerid]);
+            $modelKeranjang->delete();
+
+
+            $json = [
+                'sukses'        => 'Item berhasil di hapus',
+            ];
+
+            echo json_encode($json);
+        }
+    }
+
     //form Login
     function login()
     {
@@ -422,7 +502,7 @@ class Home extends BaseController
                     ]
                 ],
                 'password'    => [
-                    'label'     => 'Password',
+                    'label'     => 'Kata Sandi',
                     'rules'     => 'required',
                     'errors'    => [
                         'required'  => '{field} tidak boleh kosong'
@@ -510,14 +590,14 @@ class Home extends BaseController
                 ],
                 'usernama' => [
                     'rules'     => 'required',
-                    'label'     => 'User Nama',
+                    'label'     => 'Nama User',
                     'errors'    => [
                         'required'  => '{field} tidak boleh kosong'
                     ]
                 ],
                 'userpassword' => [
                     'rules'     => 'required',
-                    'label'     => 'User Password',
+                    'label'     => 'Kata Sandi',
                     'errors'    => [
                         'required'  => '{field} tidak boleh kosong'
                     ]
@@ -569,6 +649,7 @@ class Home extends BaseController
         }
     }
 
+    // untuk verifikasi akun
     public function kirimverifikasi()
     {
         if ($this->request->isAJAX()) {
@@ -687,8 +768,136 @@ class Home extends BaseController
     }
 
 
+    // untuk lupa kata sandi
+    public function lupasandi()
+    {
+        if ($this->request->isAJAX()) {
+            $emailuser      = $this->request->getPost('emailuser');
+
+            $validation = \Config\Services::validation();
 
 
+
+            $valid = $this->validate([
+                'emailuser'    => [
+                    'label'     => 'Email',
+                    'rules'     => 'required',
+                    'errors'    => [
+                        'required'  => '{field} tidak boleh kosong'
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $json = [
+                    'error' => [
+                        'errEmail'     => $validation->getError('emailuser'),
+                    ]
+                ];
+            } else {
+                $modelUser = new ModelUsers();
+                $rowUser = $modelUser->find($emailuser);
+
+                $userid      = $rowUser['userid'];
+                $usernama      = $rowUser['usernama'];
+
+                $useranda = sha1($userid);
+
+                $isiemail = "<h1>HI " . $usernama . " ...</h1><p>Ganti Password Anda<br><br>Kamu bisa klik tautan dibawah ini untuk mengganti Sandi Anda : <br>
+                        http://192.168.1.99/toko-online/public/home/ubahsandi/" . $useranda . "</p>";
+
+
+                $email = service('email');
+                $email->setTo($userid);
+                $email->setFrom('sutino.skom@gmail.com', 'Sutino');
+
+                $email->setSubject('Lupa Kata Sandi');
+
+                $email->setMessage($isiemail);
+
+
+                if ($email->send()) {
+                    $json = [
+                        'berhasil'        => 'Tautan berhasil dikirimkan ke email Anda, silahkan buka email Anda...'
+                    ];
+                }
+            }
+            echo json_encode($json);
+        }
+    }
+
+    // form ganti sandi
+    public function ubahsandi($user)
+    {
+        $modelUser = new ModelUsers();
+        $rowUser = $modelUser->cekUser($user)->getRowArray();
+
+        $data = [
+            'userid' => $rowUser['userid'],
+            'usernama' => $rowUser['usernama'],
+        ];
+
+
+        return view('gantisandi', $data);
+    }
+
+    // proses ubah sandi
+    public function prosesubahsandi()
+    {
+        if ($this->request->isAJAX()) {
+            $userid = $this->request->getPost('userid');
+            $userpassword = $this->request->getPost('userpassword');
+            $ulangpassword = $this->request->getPost('ulangpassword');
+
+            $validation = \Config\Services::validation();
+
+
+
+            $valid = $this->validate([
+                'userpassword'    => [
+                    'label'     => 'Sandi',
+                    'rules'     => 'required',
+                    'errors'    => [
+                        'required'  => '{field} tidak boleh kosong'
+                    ]
+                ],
+                'ulangpassword'    => [
+                    'label'     => 'Konfirmasi Sandi',
+                    'rules'     => 'required',
+                    'errors'    => [
+                        'required'  => '{field} tidak boleh kosong'
+                    ]
+                ]
+            ]);
+
+            if (!$valid) {
+                $json = [
+                    'error' => [
+                        'errUserPassword'     => $validation->getError('userpassword'),
+                        'errUserUlangPassword'   => $validation->getError('ulangpassword'),
+                    ]
+                ];
+            } else if ($userpassword != $ulangpassword) {
+                $json = [
+                    'error' => [
+                        'errUserUlangPassword'   => 'Sandi tidak sama',
+                    ]
+                ];
+            } else {
+                $modelUser  = new ModelUsers();
+
+                $modelUser->update($userid, [
+                    'userpassword' => sha1($userpassword)
+                ]);
+
+                $json = [
+                    'sukses' => 'Anda berhasil merubah sandi Anda...'
+                ];
+            }
+
+            echo json_encode($json);
+        }
+    }
 
 
 

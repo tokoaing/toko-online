@@ -98,10 +98,13 @@
                     <?php
                     if (session()->namauser) {
                     ?>
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <a class="nav-icon position-relative text-decoration-none" href="#" id="tombolLihatKeranjang">
                             <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                             <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" id="totalKeranjang"></span>
                         </a>
+
+                        <input type="hidden" name="jumlahKeranjang" id="jumlahKeranjang">
+                        <input type="hidden" name="useridkeranjang" id="useridkeranjang" value="<?= sha1(session()->iduser) ?>">
 
                         <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
 
@@ -139,26 +142,29 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLoginLabel">Silahkan Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalLogin">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form action="<?= base_url('home/login') ?>" class="formlogin">
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                            <label for="email">Email :</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off">
                             <div class="invalid-feedback errorEmail"></div>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                            <label for="password">Kata Sandi :</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" autocomplete="off">
                             <div class="invalid-feedback errorPassword"></div>
                         </div>
-                        <div class="form-group">
-                            <label for="formLogin">Belum punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalDaftar" id="tombolDaftar">disini</a></label>
+                        <div class="form-group text-right">
+                            <label for="forgotpass"><a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalLupaSandi" id="tombolLupaSandi">Lupa Kata Sandi</a> </label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="form-group">
+                            <label for="formLogin">Belum punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalDaftar" id="tombolDaftar">disini</a></label></label>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-primary">Login</button>
                     </form>
                 </div>
             </div>
@@ -171,7 +177,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalDaftarLabel">Form Daftar</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalDaftar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -181,30 +187,24 @@
 
                         <div class="form-group">
                             <label for="">Nama Lengkap</label>
-                            <input type="text" name="usernama" id="usernama" class="form-control" placeholder="Masukan Nama Lengkap...">
+                            <input type="text" name="usernama" id="usernama" class="form-control" placeholder="Masukan Nama Lengkap..." autocomplete="off">
                             <div class="invalid-feedback errorUserNama"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="">User ID</label>
-                            <input type="text" name="userid" id="userid" class="form-control" placeholder="Masukan User Name...">
+                            <input type="text" name="userid" id="userid" class="form-control" placeholder="Masukan User Name..." autocomplete="off">
                             <div class="invalid-feedback errorUserID"></div>
                         </div>
 
                         <div class="form-group">
-                            <label for="">Password</label>
-                            <input type="password" name="userpassword" id="userpassword" class="form-control" placeholder="Masukan Password...">
+                            <label for="">Kata Sandi</label>
+                            <input type="password" name="userpassword" id="userpassword" class="form-control" placeholder="Masukan Password..." autocomplete="off">
                             <div class="invalid-feedback errorUserPassword"></div>
                         </div>
 
                         <div class="form-group">
-                            <label for="formLogin">Sudah punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalLogin" id="tombolLogin">disini</a></label>
-                        </div>
-
-                        <div class="row px-3 mb-4">
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="hidden" name="userlevel" value="2" class="form-control">
-                            </div>
+                            <label for="formLogin">Sudah punya akun ? klik <a href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#modalLogin" id="tombolLogin">disini</a></label><input type="hidden" name="userlevel" value="2" class="form-control">
                         </div>
 
                         <div class="row mb-3 px-3"> <button type="submit" class="btn btn-primary btn-block text-center">Daftar</button> </div>
@@ -212,6 +212,30 @@
 
                     </form>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lupa kata sandi -->
+    <div class="modal fade" id="modalLupaSandi" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalLupaSandiLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLupaSandiLabel">Ganti Sandi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalLupaSandi">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('home/lupasandi') ?>" class="formlupasandi">
+                        <div class="form-group">
+                            <label for="emailuser">Masukan Email :</label>
+                            <input type="email" name="emailuser" class="form-control" id="emailuser" placeholder="Enter email" autocomplete="off">
+                            <div class="invalid-feedback errorEmail"></div>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-primary">Kirim Verifikasi</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -312,6 +336,8 @@
 
     <script>
         $(document).ready(function() {
+
+            // proses daftar akun
             $('.formdaftar').submit(function(e) {
                 e.preventDefault();
 
@@ -401,6 +427,7 @@
                 dataType: "json",
                 success: function(response) {
                     $('#totalKeranjang').html(response.totalkeranjang);
+                    $('#jumlahKeranjang').val(response.totalkeranjang);
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     alert(xhr.status + '\n' + thrownError);
@@ -408,12 +435,34 @@
             });
         }
 
+        // tombol lihat keranjang
+        $(document).ready(function() {
+            $('#tombolLihatKeranjang').click(function(e) {
+                e.preventDefault();
+                let jumlahKeranjang = $('#jumlahKeranjang').val();
+                let user = $('#useridkeranjang').val();
+
+                if (jumlahKeranjang == 0) {
+                    Swal.fire(
+                        'Opss...',
+                        'Belum ada product dikeranjang Anda..Lanjut belanja',
+                        'error'
+                    ).then((result) => {
+                        window.location.href = '<?= base_url() ?>/home/katalog';
+                    })
+                } else {
+                    window.location.href = '<?= base_url() ?>/home/keranjang/' + user;
+                }
+
+            });
+        });
 
 
+        // untuk form login
         $(document).ready(function() {
             ambilTotalKeranjang();
 
-
+            // proses form login
             $('.formlogin').submit(function(e) {
                 e.preventDefault();
 
@@ -463,21 +512,37 @@
 
             });
 
-            $('#closeModal').click(function(e) {
+            // close modal login
+            $('#closeModalLogin').click(function(e) {
                 e.preventDefault();
                 $('#modalLogin').modal('hide');
             });
 
+            // close modal daftar
+            $('#closeModalDaftar').click(function(e) {
+                e.preventDefault();
+                $('#modalDaftar').modal('hide');
+            });
+
+            // close modal lupa sandi
+            $('#closeModalLupaSandi').click(function(e) {
+                e.preventDefault();
+                $('#modalLupaSandi').modal('hide');
+            });
+
+            // jika klik tombol daftar hide modal login
             $('#tombolDaftar').click(function(e) {
                 e.preventDefault();
                 $('#modalLogin').modal('hide');
             });
 
+            // jika klik tombol login hide modal daftar
             $('#tombolLogin').click(function(e) {
                 e.preventDefault();
                 $('#modalDaftar').modal('hide');
             });
 
+            // tombol logout
             $('#logout').click(function(e) {
                 e.preventDefault();
                 $.ajax({
@@ -495,6 +560,48 @@
                         });
                     }
                 });
+            });
+
+            // untuk reset password
+            $('.formlupasandi').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "post",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.error) {
+                            let err = response.error;
+
+                            if (err.errEmail) {
+                                $('#emailuser').addClass('is-invalid');
+                                $('.errorEmail').html(err.errEmail);
+                            } else {
+                                $('#emailuser').removeClass('is-invalid');
+                                $('#emailuser').addClass('is-valid');
+                            }
+                        }
+
+                        if (response.berhasil) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.berhasil
+                            }).then((resul) => {
+                                if (resul.isConfirmed) {
+                                    window.location
+                                        .reload();
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + '\n' + thrownError);
+                    }
+                });
+
             });
 
         });

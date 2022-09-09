@@ -12,10 +12,11 @@ class ModelKeranjang extends Model
         'kertanggal', 'kerbrgid', 'kerjml', 'keruser'
     ];
 
-    public function cekKeranjang($kerbrgid)
+    public function cekKeranjang($kerbrgid, $keruser)
     {
         return $this->table('keranjang')->getWhere([
-            'kerbrgid' => $kerbrgid
+            'kerbrgid' => $kerbrgid,
+            'keruser' => $keruser
         ]);
     }
 
@@ -30,5 +31,14 @@ class ModelKeranjang extends Model
             $totalKeranjang += $r['kerjml'];
         endforeach;
         return $totalKeranjang;
+    }
+
+
+
+    public function cekBelanja($user)
+    {
+        return $this->table('users')->join('product', 'prodid=kerbrgid', 'left')->getWhere([
+            'sha1(keruser)' => $user
+        ]);
     }
 }
