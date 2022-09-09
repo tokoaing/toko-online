@@ -11,6 +11,9 @@
         margin: 0;
     }
 </style>
+
+<?= csrf_field(); ?>
+
 <!-- Modal -->
 <div class="modal fade" id="modalTambahKeranjang" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalTambahKeranjangLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -43,7 +46,7 @@
                                             <span class="glyphicon glyphicon-minus"><i class="fa fa-minus"></i></span>
                                         </button>
                                     </span>
-                                    <input type="text" name="kerjml" id="kerjml" class="form-control input-number" value="1" min="1" max="1000">
+                                    <input type="text" name="kerjml" id="kerjml" class="form-control input-number" value="1" min="1" max="<?= $tampilproduct['prodstock'] ?>">
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="kerjml">
                                             <span class="glyphicon glyphicon-plus"><i class="fa fa-plus"></i></span>

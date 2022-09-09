@@ -1,7 +1,7 @@
 <?= $this->extend('layout'); ?>
 
 <?= $this->section('isi') ?>
-
+<?= csrf_field(); ?>
 
 <div class="container py-5">
     <div class="row">

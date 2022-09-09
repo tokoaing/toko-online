@@ -1,7 +1,7 @@
 <?= $this->extend('layout'); ?>
 
 <?= $this->section('isi') ?>
-
+<?= csrf_field(); ?>
 
 <!-- Start Banner Hero -->
 <div class="row tampilBaner">

@@ -354,6 +354,9 @@ class Home extends BaseController
             $kerjml = $this->request->getPost('kerjml');
             $keruser = $this->request->getPost('keruser');
 
+            $modelProduct = new ModelProduct();
+            $rowProduct = $modelProduct->find($kerbrgid);
+
 
             $modelKeranjang = new ModelKeranjang();
             $cekKeranjang = $modelKeranjang->cekKeranjang($kerbrgid, $keruser)->getRowArray();
@@ -364,10 +367,16 @@ class Home extends BaseController
                 $kerid = $cekKeranjang['kerid'];
                 $jmlbaru = $cekKeranjang['kerjml'] + $kerjml;
 
+                if ($jmlbaru > $rowProduct['prodstock']) {
+                    $totaljumlah = $rowProduct['prodstock'];
+                } else {
+                    $totaljumlah = $jmlbaru;
+                }
+
                 $modelKeranjang->update($kerid, [
                     'kertanggal'     => $kertanggal,
                     'kerbrgid'    => $kerbrgid,
-                    'kerjml' => $jmlbaru,
+                    'kerjml' => $totaljumlah,
                     'keruser'  => $keruser,
                 ]);
             } else {
@@ -475,7 +484,24 @@ class Home extends BaseController
 
 
             $json = [
-                'sukses'        => 'Item berhasil di hapus',
+                'sukses'        => 'Item berhasil dihapus',
+            ];
+
+            echo json_encode($json);
+        }
+    }
+
+    //menghapus semua keranjang
+    public function hapusSemuaKeranjang($iduser)
+    {
+        if ($this->request->isAJAX()) {
+            $modelKeranjang = new ModelKeranjang();
+            $modelKeranjang->where(['sha1(keruser)' => $iduser]);
+            $modelKeranjang->delete();
+
+
+            $json = [
+                'sukses'        => 'Item berhasil dikosongkan',
             ];
 
             echo json_encode($json);

@@ -1,3 +1,5 @@
+<?= csrf_field(); ?>
+
 <input type="hidden" id="namauser" value="<?= session()->namauser ?>">
 <?php foreach ($tampilkatalog as $rowproduct) : ?>
 

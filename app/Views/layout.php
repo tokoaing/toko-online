@@ -43,6 +43,7 @@
 </head>
 
 <body>
+    <?= csrf_field(); ?>
     <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">

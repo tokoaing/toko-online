@@ -325,6 +325,7 @@
 </head>
 
 <body style="width:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;padding:0;Margin:0">
+    <?= csrf_field(); ?>
     <div class="es-wrapper-color" style="background-color:#F4F4F4">
         <!--[if gte mso 9]>
 			<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">

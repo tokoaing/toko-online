@@ -1,6 +1,7 @@
 <?= $this->extend('layout'); ?>
 
 <?= $this->section('isi') ?>
+<?= csrf_field(); ?>
 
 <div class="container-fluid mb-5">
     <h1 class="text-center mt-3 mb-3">Daftar Belanja</h1>
@@ -50,7 +51,8 @@
                 <h4 id="totalHargaBelanjaan">Total Harga : <?= number_format($totalBelanja) ?></h4>
             </div>
             <div class="col-6 text-right">
-                <button type="button" class="btn btn-danger">Kosongkan Kerajang</button>
+                <button type="button" class="btn btn-danger" onclick="hapusSemuaeranjang('<?= sha1(session()->iduser) ?>')">Kosongkan Kerajang</button>
+                <button type="button" class="btn btn-primary" onclick="lanjutBelanja()">Lanjutkan Belanja</button>
                 <button type="button" class="btn btn-success">Lanjutkan Pemesanan</button>
             </div>
         </div>
@@ -65,7 +67,6 @@
 
 <script>
     function hapusItemKeranjang(id) {
-
         Swal.fire({
             title: 'Apakah kamu yakin ?',
             text: "Anda tidak akan dapat mengembalikan ini!",
@@ -93,8 +94,40 @@
                 });
             }
         })
+    }
 
+    function hapusSemuaeranjang(iduser) {
+        Swal.fire({
+            title: 'Apakah kamu yakin ?',
+            text: "Mengosongkan keranjang Anda!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kosongkan!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "<?= base_url() ?>/home/hapusSemuaKeranjang/" + iduser,
+                    dataType: "json",
+                    success: function(response) {
+                        Swal.fire(
+                            'Berhasil!',
+                            response.sukses,
+                            'success'
+                        ).then((result) => {
+                            window.location.reload();
+                        })
+                    }
+                });
+            }
+        })
+    }
 
+    function lanjutBelanja() {
+        window.location.href = '<?= base_url() ?>/home/katalog';
     }
 </script>
 
