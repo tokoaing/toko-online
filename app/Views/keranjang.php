@@ -6,7 +6,7 @@
 <div class="container-fluid mb-5">
     <h1 class="text-center mt-3 mb-3">Daftar Belanja</h1>
     <div class="row m-2">
-        <table class="table" style="position: relative;">
+        <table class="table table-responsive" style="position: relative;">
             <thead>
                 <tr>
                     <th>No</th>
