@@ -41,4 +41,14 @@ class ModelKeranjang extends Model
             'sha1(keruser)' => $user
         ]);
     }
+
+
+
+    public function cekKeranjangDetail($kerbrgid, $keruser)
+    {
+        return $this->table('keranjang')->getWhere([
+            'sha1(kerbrgid)' => $kerbrgid,
+            'keruser' => $keruser
+        ]);
+    }
 }

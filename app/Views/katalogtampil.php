@@ -1,6 +1,6 @@
 <?= csrf_field(); ?>
 
-<input type="hidden" id="namauser" value="<?= session()->namauser ?>">
+<input type="hidden" id="iduser" value="<?= session()->iduser ?>">
 <?php foreach ($tampilkatalog as $rowproduct) : ?>
 
     <div class="col-md-3">
@@ -9,9 +9,9 @@
                 <img class="card-img rounded-0 img-fluid" src="<?= base_url() ?>/assets/img/<?= $rowproduct['prodgambar'] ?>">
                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                     <ul class="list-unstyled">
-                        <li><a class="btn btn-success text-white" href="#" onclick="tambahFavorit('<?= $rowproduct['prodid'] . ',' . session()->namauser ?>')"><i class="far fa-heart"></i></a></li>
+                        <li><a class="btn btn-success text-white" href="#" onclick="tambahFavorit('<?= $rowproduct['prodid'] . ',' . session()->iduser ?>')"><i class="far fa-heart"></i></a></li>
                         <li><a class="btn btn-success text-white mt-2" href="#" onclick="detailBarang('<?= sha1($rowproduct['prodid']) ?>')"><i class="far fa-eye"></i></a></li>
-                        <li><a class="btn btn-success text-white mt-2" href="#" onclick="tambahKeranjang('<?= $rowproduct['prodid'] . ',' . session()->namauser ?>')"><i class="fas fa-cart-plus"></i></a></li>
+                        <li><a class="btn btn-success text-white mt-2" href="#" onclick="tambahKeranjang('<?= $rowproduct['prodid'] . ',' . session()->iduser ?>')"><i class="fas fa-cart-plus"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -39,9 +39,9 @@
 <script>
     // tambah ke list Favorit
     function tambahFavorit(id) {
-        let namauser = $('#namauser').val();
+        let iduser = $('#iduser').val();
         let login = "";
-        if (namauser == "") {
+        if (iduser == "") {
             Swal.fire({
                 title: 'Anda belum login!',
                 text: "Apakah Anda ingin login ?",
@@ -57,7 +57,7 @@
                 }
             })
         } else {
-            alert(namauser);
+            alert(iduser);
         }
     }
 
@@ -68,8 +68,8 @@
 
     // tambah ke keranjang
     function tambahKeranjang(id) {
-        let namauser = $('#namauser').val();
-        if (namauser == "") {
+        let iduser = $('#iduser').val();
+        if (iduser == "") {
             Swal.fire({
                 title: 'Anda belum login!',
                 text: "Apakah Anda ingin login ?",
@@ -86,7 +86,12 @@
             })
         } else {
             $.ajax({
+                type: "post",
                 url: "<?= base_url() ?>/home/modalTambahKeranjang/" + id,
+                data: {
+                    id: id,
+                    iduser: iduser
+                },
                 dataType: "json",
                 success: function(response) {
                     if (response.data) {

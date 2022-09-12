@@ -331,6 +331,10 @@
     <script src="<?= base_url() ?>/assets/js/custom.js"></script>
     <!-- End Script -->
 
+    <!-- Start Script -->
+    <script src="<?= base_url() ?>/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- End Script -->
+
     <!-- Start Slider Script -->
     <script src="<?= base_url() ?>/assets/js/slick.min.js"></script>
 

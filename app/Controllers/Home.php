@@ -160,6 +160,15 @@ class Home extends BaseController
 
     public function katalogdetail($id)
     {
+
+
+        $kerbrgid = $id;
+        $keruser = session()->iduser;
+
+        $modelKeranjang = new ModelKeranjang();
+        $rowKeranjang = $modelKeranjang->cekKeranjangDetail($kerbrgid, $keruser)->getRowArray();
+
+
         // menampilkan data perusahaan
         $modelPerusahaan = new ModelPerusahaan();
         $rowPeru = $modelPerusahaan->find(1);
@@ -174,6 +183,7 @@ class Home extends BaseController
 
 
         $cekBranch = $modelBranch->findAll();
+
 
 
 
@@ -201,6 +211,7 @@ class Home extends BaseController
                 'prodgambar'        => $rowProduct['prodgambar'],
                 'productDetail'     => $modelProductDetail->productDetail($rowProduct['prodid']),
                 'branchnama'        => $rowBranch['branchnama'],
+                'tampildatakeranjang' => $rowKeranjang,
             ];
         } else {
             $data = [
@@ -226,6 +237,7 @@ class Home extends BaseController
                 'prodgambar'        => 'Default',
                 'productDetail'     => 'Default',
                 'branchnama'        => '',
+                'tampildatakeranjang' => 'default',
             ];
         }
 
@@ -323,16 +335,23 @@ class Home extends BaseController
     }
 
     // modal tambah keranjang
-    function modalTambahKeranjang($id)
+    function modalTambahKeranjang()
     {
         if ($this->request->isAJAX()) {
+            $kerbrgid = $this->request->getvar('id');
+            $keruser = $this->request->getvar('iduser');
+
             $modelProduct = new ModelProduct();
-            $dataProduct = $modelProduct->find($id);
+            $dataProduct = $modelProduct->find($kerbrgid);
+
+            $modelKeranjang = new ModelKeranjang();
+            $rowKeranjang = $modelKeranjang->cekKeranjang($kerbrgid, $keruser)->getRowArray();
 
 
 
             $data = [
                 'tampilproduct' => $dataProduct,
+                'tampildatakeranjang' => $rowKeranjang
             ];
 
             $json = [
@@ -365,7 +384,14 @@ class Home extends BaseController
             if ($cekKeranjang > 0) {
 
                 $kerid = $cekKeranjang['kerid'];
-                $jmlbaru = $cekKeranjang['kerjml'] + $kerjml;
+
+
+                if ($kerjml > $cekKeranjang['kerjml']) {
+                    $jmlbaru = $cekKeranjang['kerjml'] + $kerjml;
+                } else {
+                    $jmlbaru = $kerjml;
+                }
+
 
                 if ($jmlbaru > $rowProduct['prodstock']) {
                     $totaljumlah = $rowProduct['prodstock'];

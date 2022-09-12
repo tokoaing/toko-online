@@ -42,10 +42,7 @@
 
 <div class="viewmodal" style="display: none;"></div>
 
-<!-- Start Script -->
-<script src="<?= base_url() ?>/assets/js/jquery-1.11.0.min.js"></script>
-<script src="<?= base_url() ?>/assets/js/bootstrap.bundle.min.js"></script>
-<!-- End Script -->
+
 
 <script>
     function katalogTampil() {

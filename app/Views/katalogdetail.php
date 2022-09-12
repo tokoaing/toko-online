@@ -105,6 +105,14 @@
                                 </div> -->
                                 <div class="form-group row">
 
+                                    <?php
+                                    if ($tampildatakeranjang['kerjml'] == "") {
+                                        $jumlahker = 1;
+                                    } else {
+                                        $jumlahker = $tampildatakeranjang['kerjml'];
+                                    }
+                                    ?>
+
                                     <input type="hidden" class="form-control" name="kerbrgid" id="kerbrgid" value="<?= $prodid ?>">
                                     <input type="hidden" class="form-control" name="keruser" id="keruser" value="<?= session()->iduser ?>">
                                     <input type="hidden" class="form-control" name="kertanggal" id="kertanggal" value="<?= date("Y-m-d") ?>">
@@ -117,7 +125,7 @@
                                                     <span class="glyphicon glyphicon-minus"><i class="fa fa-minus"></i></span>
                                                 </button>
                                             </span>
-                                            <input type="text" name="kerjml" id="kerjml" class="form-control input-number" value="1" min="1" max="<?= $prodstock ?>">
+                                            <input type="text" name="kerjml" id="kerjml" class="form-control input-number" value="<?= $jumlahker ?>" min="1" max="<?= $prodstock ?>">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="kerjml">
                                                     <span class="glyphicon glyphicon-plus"><i class="fa fa-plus"></i></span>
