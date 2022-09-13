@@ -9,6 +9,14 @@ use App\Models\ModelUsers;
 
 class Profil extends BaseController
 {
+
+    public function __construct()
+    {
+        helper('form');
+    }
+
+
+
     public function index($user)
     {
         $modelUser = new ModelUsers();
@@ -92,5 +100,80 @@ class Profil extends BaseController
         }
 
         return view('profil/lihat', $data);
+    }
+
+
+    public function editprofil()
+    {
+        if ($this->request->isAJAX()) {
+            $user = sha1($this->request->getVar('userid'));
+
+            $modelUser = new ModelUsers();
+            $rowData = $modelUser->cekUser($user)->getRowArray();
+
+            $data = [
+                'userid'            => $rowData['userid'],
+                'usernama'          => $rowData['usernama'],
+                'userpassword'      => $rowData['userpassword'],
+                'userlevel'         => $rowData['userlevel'],
+                'usergender'        => $rowData['usergender'],
+                'userlahir'         => $rowData['userlahir'],
+                'useralamat'        => $rowData['useralamat'],
+                'userrt'            => $rowData['userrt'],
+                'userrw'            => $rowData['userrw'],
+                'useralamatid'      => $rowData['useralamatid'],
+                'usertelp'          => $rowData['usertelp'],
+                'userfoto'          => $rowData['userfoto'],
+                'usermap'           => $rowData['usermap'],
+                'propinsi'          => $rowData['propinsi'],
+                'kota_kabupaten'    => $rowData['kota_kabupaten'],
+                'kecamatan'         => $rowData['kecamatan'],
+                'kelurahan'         => $rowData['kelurahan'],
+                'kodepos'           => $rowData['kodepos'],
+            ];
+
+            $json = [
+                'data' => view('profil/editprofil', $data)
+            ];
+
+            echo json_encode($json);
+        } else {
+            exit('Maaf, gagal menampilkan data');
+        }
+    }
+
+    public function simpanprofil()
+    {
+        if ($this->request->isAJAX()) {
+            $userfoto = $this->request->getVar('userfoto');
+
+            $validation = \Config\Services::validation();
+
+            $valid = $this->validate([
+                'userfoto' => [
+                    'rules'     => 'required',
+                    'label'     => 'Gambar',
+                    'errors'    => [
+                        'required' => '{field} tidak boleh kosong',
+                    ]
+                ],
+            ]);
+
+            if (!$valid) {
+                $json = [
+                    'error' => [
+                        'errUserFoto'         => $validation->getError('userfoto'),
+                    ]
+                ];
+            } else {
+                $json = [
+                    'sukses' => 'berhasil'
+                ];
+            }
+
+            echo json_encode($json);
+        } else {
+            exit('Maaf, gagal menampilkan data');
+        }
     }
 }
