@@ -34,7 +34,7 @@
                 <thead>
                     <tr align="center">
                         <th>
-                            <img src="<?= base_url() ?>/assets/img/favicon.png" alt="" srcset="" onclick="gantifoto('<?= $userid ?>')">
+                            <img src="<?= base_url() ?>/upload/<?= $userfoto ?>" width="200px" height="300px" class="image rounded-circle" onclick="gantifoto('<?= $userid ?>')">
                             <br>
                             <br>
                         </th>

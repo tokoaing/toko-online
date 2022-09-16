@@ -19,10 +19,6 @@ class Kategori extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
             ],
-            'katparent' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-            ],
         ]);
         $this->forge->addKey('katid', true);
         $this->forge->createTable('kategori');

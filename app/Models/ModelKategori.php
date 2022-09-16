@@ -9,6 +9,6 @@ class ModelKategori extends Model
     protected $table            = 'kategori';
     protected $primaryKey       = 'katid';
     protected $allowedFields    = [
-        'katnama', 'katparent'
+        'katnama'
     ];
 }

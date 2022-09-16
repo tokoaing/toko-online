@@ -86,7 +86,7 @@
             <div class="col-6 text-right">
                 <button type="button" class="btn btn-danger mb-1" onclick="hapusSemuaeranjang('<?= sha1(session()->iduser) ?>')">Kosongkan Kerajang</button>
                 <button type="button" class="btn btn-primary mb-1" onclick="lanjutBelanja()">Lanjutkan Belanja</button>
-                <button type="button" class="btn btn-success mb-1">Lanjutkan Pemesanan</button>
+                <button type="button" class="btn btn-success mb-1" onclick="pesanSekarang('<?= sha1(session()->iduser) ?>')">Lanjutkan Pemesanan</button>
             </div>
         </div>
 
@@ -96,6 +96,7 @@
 
 
 <script>
+    // untuk menghapus keranjang satu persatu
     function hapusItemKeranjang(id) {
         Swal.fire({
             title: 'Apakah kamu yakin ?',
@@ -126,6 +127,7 @@
         })
     }
 
+    // untuk menghapus semua keranjang
     function hapusSemuaeranjang(iduser) {
         Swal.fire({
             title: 'Apakah kamu yakin ?',
@@ -156,8 +158,21 @@
         })
     }
 
+    // untuk lanjut belanja
     function lanjutBelanja() {
         window.location.href = '<?= base_url() ?>/home/katalog';
+    }
+
+    // tambah pesanan
+    function pesanSekarang(id) {
+        Swal.fire({
+            title: 'Maaf...',
+            text: 'Kami sedang mengembangkan tahap ini.',
+            imageUrl: '<?= base_url() ?>/assets/img/maintenance.gif',
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Custom image',
+        })
     }
 </script>
 

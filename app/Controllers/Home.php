@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ModelBaner;
 use App\Models\ModelBranch;
+use App\Models\ModelKategori;
 use App\Models\ModelKeranjang;
 use App\Models\ModelLevels;
 use App\Models\ModelPerusahaan;
@@ -92,6 +93,9 @@ class Home extends BaseController
     // menampilkan halaman katalog
     public function katalog()
     {
+        $keyword = $this->request->getVar('keyword');
+        $keywordlink = $this->request->getVar('keywordlink');
+
         // menampilkan data perusahaan
         $modelPerusahaan = new ModelPerusahaan();
         $rowPeru = $modelPerusahaan->find(1);
@@ -99,6 +103,31 @@ class Home extends BaseController
         // menampilkan branch
         $modelBranch = new ModelBranch();
         $cekBranch = $modelBranch->findAll();
+
+        // menampilkan kategori
+        $modelKategori = new ModelKategori();
+
+        // menampilkan product
+        $modelProduct = new ModelProduct();
+
+
+        if ($keyword) {
+            $product = $modelProduct->search($keyword);
+            $oldkey = $keyword;
+        } else if ($keywordlink) {
+            $product = $modelProduct->searchlink($keywordlink);
+            $oldkey = $keyword;
+        } else {
+            $product = $modelProduct;
+            $oldkey = '';
+        }
+
+        $dataProduct = $product->paginate(8, 'product');
+
+
+
+        $data = [];
+
 
 
         if ($rowPeru > 0) {
@@ -114,6 +143,9 @@ class Home extends BaseController
                 'peruicon'          => $rowPeru['peruicon'],
                 'perufoto'          => $rowPeru['perufoto'],
                 'databranch'        => $cekBranch,
+                'tampilkatalog'     => $dataProduct,
+                'pager'             => $product->pager,
+                'kategori'          => $modelKategori->findAll(),
             ];
         } else {
             $data = [
@@ -128,36 +160,18 @@ class Home extends BaseController
                 'peruicon'          => '',
                 'perufoto'          => 'Default',
                 'databranch'        => 'Default',
+                'tampilkatalog'     => 'Default',
+                'pager'             => 'Default',
+                'kategori'          => 'Default',
             ];
         }
+
 
         return view('katalog', $data);
     }
 
-    // menampilkan data katalog
-    function katalogTampil()
-    {
-        if ($this->request->isAJAX()) {
-            $modelProduct = new ModelProduct();
-            $dataProduct = $modelProduct->findAll();
 
-
-
-            $data = [
-                'tampilkatalog' => $dataProduct,
-            ];
-
-            $json = [
-                'data' => view('katalogtampil', $data)
-            ];
-
-            echo json_encode($json);
-        } else {
-            exit('Maaf, gagal menampilkan data');
-        }
-    }
-
-
+    // katalog detail
     public function katalogdetail($id)
     {
 
@@ -189,54 +203,54 @@ class Home extends BaseController
 
         if ($rowPeru > 0) {
             $data = [
-                'peruid'            => $rowPeru['peruid'],
-                'perunama'          => $rowPeru['perunama'],
-                'perualamat'        => $rowPeru['perualamat'],
-                'perualamatlink'    => $rowPeru['perualamatlink'],
-                'peruwa'            => $rowPeru['peruwa'],
-                'perutelp'          => $rowPeru['perutelp'],
-                'perufax'           => $rowPeru['perufax'],
-                'peruemail'         => $rowPeru['peruemail'],
-                'peruicon'          => $rowPeru['peruicon'],
-                'perufoto'          => $rowPeru['perufoto'],
-                'databranch'        => $cekBranch,
-                'prodid'            => $rowProduct['prodid'],
-                'prodnama'          => $rowProduct['prodnama'],
-                'prodtype'          => $rowProduct['prodtype'],
-                'prodkat'           => $rowProduct['prodkat'],
-                'prodbranch'        => $rowProduct['prodbranch'],
-                'proddeskripsi'     => $rowProduct['proddeskripsi'],
-                'prodharga'         => $rowProduct['prodharga'],
-                'prodstock'         => $rowProduct['prodstock'],
-                'prodgambar'        => $rowProduct['prodgambar'],
-                'productDetail'     => $modelProductDetail->productDetail($rowProduct['prodid']),
-                'branchnama'        => $rowBranch['branchnama'],
-                'tampildatakeranjang' => $rowKeranjang,
+                'peruid'                => $rowPeru['peruid'],
+                'perunama'              => $rowPeru['perunama'],
+                'perualamat'            => $rowPeru['perualamat'],
+                'perualamatlink'        => $rowPeru['perualamatlink'],
+                'peruwa'                => $rowPeru['peruwa'],
+                'perutelp'              => $rowPeru['perutelp'],
+                'perufax'               => $rowPeru['perufax'],
+                'peruemail'             => $rowPeru['peruemail'],
+                'peruicon'              => $rowPeru['peruicon'],
+                'perufoto'              => $rowPeru['perufoto'],
+                'databranch'            => $cekBranch,
+                'prodid'                => $rowProduct['prodid'],
+                'prodnama'              => $rowProduct['prodnama'],
+                'prodtype'              => $rowProduct['prodtype'],
+                'prodkat'               => $rowProduct['prodkat'],
+                'prodbranch'            => $rowProduct['prodbranch'],
+                'proddeskripsi'         => $rowProduct['proddeskripsi'],
+                'prodharga'             => $rowProduct['prodharga'],
+                'prodstock'             => $rowProduct['prodstock'],
+                'prodgambar'            => $rowProduct['prodgambar'],
+                'productDetail'         => $modelProductDetail->productDetail($rowProduct['prodid']),
+                'branchnama'            => $rowBranch['branchnama'],
+                'tampildatakeranjang'   => $rowKeranjang,
             ];
         } else {
             $data = [
-                'peruid'            => 'Default',
-                'perunama'          => 'Default',
-                'perualamat'        => 'Default',
-                'perualamatlink'    => 'Default',
-                'peruwa'            => 'Default',
-                'perutelp'          => 'Default',
-                'perufax'           => 'Default',
-                'peruemail'         => 'Default',
-                'peruicon'          => '',
-                'perufoto'          => 'Default',
-                'databranch'        => 'Default',
-                'prodid'            => 'Default',
-                'prodnama'          => 'Default',
-                'prodtype'          => 'Default',
-                'prodkat'           => 'Default',
-                'prodbranch'        => 'Default',
-                'proddeskripsi'     => 'Default',
-                'prodharga'         => 'Default',
-                'prodstock'         => 'Default',
-                'prodgambar'        => 'Default',
-                'productDetail'     => 'Default',
-                'branchnama'        => '',
+                'peruid'                => 'Default',
+                'perunama'              => 'Default',
+                'perualamat'            => 'Default',
+                'perualamatlink'        => 'Default',
+                'peruwa'                => 'Default',
+                'perutelp'              => 'Default',
+                'perufax'               => 'Default',
+                'peruemail'             => 'Default',
+                'peruicon'              => '',
+                'perufoto'              => 'Default',
+                'databranch'            => 'Default',
+                'prodid'                => 'Default',
+                'prodnama'              => 'Default',
+                'prodtype'              => 'Default',
+                'prodkat'               => 'Default',
+                'prodbranch'            => 'Default',
+                'proddeskripsi'         => 'Default',
+                'prodharga'             => 'Default',
+                'prodstock'             => 'Default',
+                'prodgambar'            => 'Default',
+                'productDetail'         => 'Default',
+                'branchnama'            => '',
                 'tampildatakeranjang' => 'default',
             ];
         }

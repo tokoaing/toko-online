@@ -9,18 +9,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="<?= base_url() ?>/assets/img/<?= $userfoto ?>" alt="" srcset="">
+                <img src="<?= base_url() ?>/upload/<?= $userfoto ?>" alt="" srcset="">
 
-                <?= form_open_multipart(base_url('profil/simpanprofil')) ?>
-                <div class="form-group">
-                    <label for="formFileLg" class="form-label">Masukan Gambar :</label>
-                    <input class="form-control form-control-lg" type="file" name="userfoto" id="userfoto" value="<?= $userfoto ?>">
-                    <div class="invalid-feedback errorUserFoto"></div>
-                </div>
-                <div class="d-grid mt-3">
-                    <input type="submit" value="Upload Gambar" class="btn btn-block btn-outline-success" id="editfoto" />
-                </div>
-                <?= form_close() ?>
+                <form method="post" action="<?= base_url(); ?>/profil/simpanfoto" class="editfoto" enctype="multipart/form-data">
+
+                    <input type="hidden" class="form-control" name="userid" id="userid" value="<?= session()->iduser ?>">
+
+                    <div class="form-group">
+                        <label for="formFileLg" class="form-label">Masukan Gambar :</label>
+                        <input class="form-control form-control-lg" type="file" name="userfoto" id="userfoto">
+                        <div class="invalid-feedback errorUserFoto"></div>
+                    </div>
+                    <div class="d-grid mt-3">
+                        <input type="submit" value="Upload Gambar" class="btn btn-block btn-outline-success" />
+                    </div>
+                </form>
 
             </div>
         </div>
@@ -42,7 +45,7 @@
                 <div class="form-group row">
                     <label for="usernama" class="col-sm-4 col-form-label">Nama Lengkap</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="usernama" id="usernama" value="<?= $userfoto ?>" placeholder="Masukan Nama Lengkap">
+                        <input type="text" class="form-control" name="usernama" id="usernama" placeholder="Masukan Nama Lengkap">
                     </div>
                 </div>
 
@@ -94,38 +97,5 @@
             window.location.reload();
         });
 
-
-
-        // simpan perubahan
-        $('#editfoto').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                dataType: "json",
-                success: function(response) {
-                    if (response.error) {
-                        let err = response.error;
-
-                        if (err.errUserFoto) {
-                            $('#userfoto').addClass('is-invalid');
-                            $('.errorUserFoto').html(err.errUserFoto);
-                        } else {
-                            $('#userfoto').removeClass('is-invalid');
-                            $('#userfoto').addClass('is-valid');
-                        }
-                    }
-
-                    if (response.sukses) {
-
-                        alert(response.sukses);
-                    }
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + '\n' + thrownError);
-                }
-            });
-        });
     });
 </script>

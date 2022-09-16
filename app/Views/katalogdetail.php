@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="<?= base_url() ?>/assets/img/<?= $prodgambar ?>" alt="<?= $prodnama ?>" id="product-detail"">
+                    <img class="card-img img-fluid" src="<?= base_url() ?>/upload/<?= $prodgambar ?>" alt="<?= $prodnama ?>" id="product-detail"">
                 </div>
                 <div class=" row">
                     <!--Start Carousel Wrapper-->
@@ -28,7 +28,7 @@
                                     ?>
                                         <div class="col-2">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="<?= base_url() ?>/assets/img/<?= $rowGambar['detprofoto'] ?>" alt="Product Image <?= $nomor++ ?>">
+                                                <img class="card-img img-fluid" src="<?= base_url() ?>/upload/<?= $rowGambar['detprofoto'] ?>" alt="Product Image <?= $nomor++ ?>">
                                             </a>
                                         </div>
 
@@ -106,7 +106,7 @@
                                 <div class="form-group row">
 
                                     <?php
-                                    if ($tampildatakeranjang['kerjml'] == "") {
+                                    if (empty($tampildatakeranjang['kerjml'])) {
                                         $jumlahker = 1;
                                     } else {
                                         $jumlahker = $tampildatakeranjang['kerjml'];
@@ -166,7 +166,14 @@
                 text: 'Anda belum login!',
             })
         } else {
-            alert('sudah login');
+            Swal.fire({
+                title: 'Maaf...',
+                text: 'Kami sedang mengembangkan tahap ini.',
+                imageUrl: '<?= base_url() ?>/assets/img/maintenance.gif',
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+            })
         }
     }
 

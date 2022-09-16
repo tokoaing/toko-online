@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\ModelBranch;
 use App\Models\ModelPerusahaan;
 use App\Models\ModelUsers;
+use Config\Services;
 
 class Profil extends BaseController
 {
@@ -142,38 +143,107 @@ class Profil extends BaseController
         }
     }
 
-    public function simpanprofil()
+    public function simpanfoto()
     {
-        if ($this->request->isAJAX()) {
-            $userfoto = $this->request->getVar('userfoto');
+        $userid          = $this->request->getVar('userid');
+        $userfoto         = $this->request->getFile('userfoto');
 
-            $validation = \Config\Services::validation();
 
-            $valid = $this->validate([
-                'userfoto' => [
-                    'rules'     => 'required',
-                    'label'     => 'Gambar',
-                    'errors'    => [
-                        'required' => '{field} tidak boleh kosong',
-                    ]
-                ],
-            ]);
+        $modelUser = new ModelUsers();
 
-            if (!$valid) {
-                $json = [
-                    'error' => [
-                        'errUserFoto'         => $validation->getError('userfoto'),
-                    ]
+        $fileGambar = $userfoto->getRandomName();
+
+        $userfoto->move('upload', $fileGambar);
+
+
+        $modelUser->update($userid, [
+            'userfoto'           => $fileGambar,
+        ]);
+
+
+        $user = sha1($userid);
+
+        if ($modelUser) {
+            $modelUser = new ModelUsers();
+            $rowUser = $modelUser->cekUser($user)->getRowArray();
+
+            // menampilkan data perusahaan
+            $modelPerusahaan = new ModelPerusahaan();
+            $rowPeru = $modelPerusahaan->find(1);
+
+            // menampilkan branch
+            $modelBranch = new ModelBranch();
+            $cekBranch = $modelBranch->findAll();
+
+            if ($rowPeru > 0) {
+                $data = [
+                    'peruid'            => $rowPeru['peruid'],
+                    'perunama'          => $rowPeru['perunama'],
+                    'perualamat'        => $rowPeru['perualamat'],
+                    'perualamatlink'    => $rowPeru['perualamatlink'],
+                    'peruwa'            => $rowPeru['peruwa'],
+                    'perutelp'          => $rowPeru['perutelp'],
+                    'perufax'           => $rowPeru['perufax'],
+                    'peruemail'         => $rowPeru['peruemail'],
+                    'peruicon'          => $rowPeru['peruicon'],
+                    'perufoto'          => $rowPeru['perufoto'],
+                    'databranch'        => $cekBranch,
+
+                    'userid'            => $rowUser['userid'],
+                    'usernama'          => $rowUser['usernama'],
+                    'userpassword'      => $rowUser['userpassword'],
+                    'userlevel'         => $rowUser['userlevel'],
+                    'usergender'        => $rowUser['usergender'],
+                    'userlahir'         => $rowUser['userlahir'],
+                    'useralamat'        => $rowUser['useralamat'],
+                    'userrt'            => $rowUser['userrt'],
+                    'userrw'            => $rowUser['userrw'],
+                    'useralamatid'      => $rowUser['useralamatid'],
+                    'propinsi'          => $rowUser['propinsi'],
+                    'kota_kabupaten'    => $rowUser['kota_kabupaten'],
+                    'kecamatan'         => $rowUser['kecamatan'],
+                    'kelurahan'         => $rowUser['kelurahan'],
+                    'kodepos'           => $rowUser['kodepos'],
+                    'usertelp'          => $rowUser['usertelp'],
+                    'userfoto'          => $rowUser['userfoto'],
+                    'usermap'           => $rowUser['usermap'],
+
                 ];
             } else {
-                $json = [
-                    'sukses' => 'berhasil'
+                $data = [
+                    'peruid'            => 'Default',
+                    'perunama'          => 'Default',
+                    'perualamat'        => 'Default',
+                    'perualamatlink'    => 'Default',
+                    'peruwa'            => 'Default',
+                    'perutelp'          => 'Default',
+                    'perufax'           => 'Default',
+                    'peruemail'         => 'Default',
+                    'peruicon'          => '',
+                    'perufoto'          => 'Default',
+                    'databranch'        => 'Default',
+
+                    'userid'            => 'Default',
+                    'usernama'          => 'Default',
+                    'userpassword'      => 'Default',
+                    'userlevel'         => 'Default',
+                    'usergender'        => 'Default',
+                    'userlahir'         => 'Default',
+                    'useralamat'        => 'Default',
+                    'userrt'            => 'Default',
+                    'userrw'            => 'Default',
+                    'useralamatid'      => 'Default',
+                    'propinsi'          => 'Default',
+                    'kota_kabupaten'    => 'Default',
+                    'kecamatan'         => 'Default',
+                    'kelurahan'         => 'Default',
+                    'kodepos'           => 'Default',
+                    'usertelp'          => 'Default',
+                    'userfoto'          => 'Default',
+                    'usermap'           => 'Default',
                 ];
             }
-
-            echo json_encode($json);
-        } else {
-            exit('Maaf, gagal menampilkan data');
         }
+        return view('profil/lihat', $data);
     }
 }

@@ -18,4 +18,14 @@ class ModelProduct extends Model
             'sha1(prodid)' => $id
         ]);
     }
+
+    public function search($keyword)
+    {
+        return $this->table('product')->like('prodnama', $keyword)->orLike('prodtype', $keyword)->orLike('proddeskripsi', $keyword);
+    }
+
+    public function searchlink($keywordlink)
+    {
+        return $this->table('product')->like('prodkat', $keywordlink);
+    }
 }
