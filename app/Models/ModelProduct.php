@@ -28,4 +28,9 @@ class ModelProduct extends Model
     {
         return $this->table('product')->like('prodkat', $keywordlink);
     }
+
+    public function searchbranch($keywordbranch)
+    {
+        return $this->table('product')->like('prodbranch', $keywordbranch);
+    }
 }

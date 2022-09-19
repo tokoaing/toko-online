@@ -20,7 +20,7 @@
 
                     <div class="row mb-3">
                         <div class="col-sm-2">
-                            <img src="<?= base_url() ?>/assets/img/<?= $rowKeranjang['prodgambar'] ?>" alt="<?= $rowKeranjang['prodgambar'] ?>" width="100px" height="100px">
+                            <img src="<?= base_url() ?>/upload/<?= $rowKeranjang['prodgambar'] ?>" alt="<?= $rowKeranjang['prodgambar'] ?>" width="100px" height="100px">
                         </div>
                         <div class="col-sm-10">
                             <h4><?= $rowKeranjang['prodnama'] ?></h4>

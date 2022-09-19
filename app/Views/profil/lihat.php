@@ -76,6 +76,7 @@
                 <h6 class=" mt-1" onclick="gantinama('<?= $userid ?>')"><?= date('d-m-Y', strtotime($userlahir)) ?></h6>
             </div>
         </div>
+        <hr>
         <div class="row mb-2">
             <div class="col-sm-6 text-left bg-success">
                 <h6 class="mt-1">Alamat</h6>

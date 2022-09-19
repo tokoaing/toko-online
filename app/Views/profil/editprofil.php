@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="<?= base_url() ?>/upload/<?= $userfoto ?>" alt="" srcset="">
+                <img src="<?= base_url() ?>/upload/<?= $userfoto ?>" width="30%" height="30%">
 
                 <form method="post" action="<?= base_url(); ?>/profil/simpanfoto" class="editfoto" enctype="multipart/form-data">
 
@@ -45,7 +45,26 @@
                 <div class="form-group row">
                     <label for="usernama" class="col-sm-4 col-form-label">Nama Lengkap</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="usernama" id="usernama" placeholder="Masukan Nama Lengkap">
+                        <input type="text" class="form-control" name="usernama" id="usernama" value="<?= $usernama ?>" placeholder="Masukan Nama Lengkap">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="usergender" class="col-sm-4 col-form-label">Jenis Kelamin</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="usergender" id="usergender">
+                            <option value="<?= $usergender ?>" selected><?= $usergender ?></option>
+                            <option value=""></option>
+                            <option value="Pria">Pria</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="userlahir" class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control" name="userlahir" id="userlahir" value="<?= $userlahir ?>">
                     </div>
                 </div>
 

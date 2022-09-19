@@ -40,6 +40,45 @@
         }
     </style>
 
+    <!-- Start of LiveChat (www.livechat.com) code -->
+    <script>
+        window.__lc = window.__lc || {};
+        window.__lc.license = 14537343;;
+        (function(n, t, c) {
+            function i(n) {
+                return e._h ? e._h.apply(null, n) : e._q.push(n)
+            }
+            var e = {
+                _q: [],
+                _h: null,
+                _v: "2.0",
+                on: function() {
+                    i(["on", c.call(arguments)])
+                },
+                once: function() {
+                    i(["once", c.call(arguments)])
+                },
+                off: function() {
+                    i(["off", c.call(arguments)])
+                },
+                get: function() {
+                    if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load.");
+                    return i(["get", c.call(arguments)])
+                },
+                call: function() {
+                    i(["call", c.call(arguments)])
+                },
+                init: function() {
+                    var n = t.createElement("script");
+                    n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n)
+                }
+            };
+            !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e
+        }(window, document, [].slice))
+    </script>
+    <noscript><a href="https://www.livechat.com/chat-with/14537343/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+    <!-- End of LiveChat code -->
+
 </head>
 
 <body>
@@ -270,7 +309,18 @@
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Produk</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <?php foreach ($databranch as $rowDataBranch) : ?>
-                            <li><a class="text-decoration-none" href="#"><?= ucwords(strtolower($rowDataBranch['branchnama'])) ?></a></li>
+                            <li>
+                                <form action="<?= base_url() ?>/home/katalog" method="post">
+                                    <div class="d-flex">
+                                        <div class="input-group">
+                                            <input type="hidden" class="form-control" name="keywordbranch" value="<?= $rowDataBranch['branchid'] ?>">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-outline-success" name="submit"><?= ucwords(strtolower($rowDataBranch['branchnama'])) ?></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
                         <?php endforeach ?>
                     </ul>
                 </div>
@@ -338,6 +388,20 @@
     <!-- Start Slider Script -->
     <script src="<?= base_url() ?>/assets/js/slick.min.js"></script>
 
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('7ab591561461d177f1f2', {
+            cluster: 'ap1'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            alert(JSON.stringify(data));
+        });
+    </script>
 
     <script>
         $(document).ready(function() {

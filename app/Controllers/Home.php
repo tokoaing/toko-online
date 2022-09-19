@@ -95,6 +95,7 @@ class Home extends BaseController
     {
         $keyword = $this->request->getVar('keyword');
         $keywordlink = $this->request->getVar('keywordlink');
+        $keywordbranch = $this->request->getVar('keywordbranch');
 
         // menampilkan data perusahaan
         $modelPerusahaan = new ModelPerusahaan();
@@ -113,13 +114,12 @@ class Home extends BaseController
 
         if ($keyword) {
             $product = $modelProduct->search($keyword);
-            $oldkey = $keyword;
         } else if ($keywordlink) {
             $product = $modelProduct->searchlink($keywordlink);
-            $oldkey = $keyword;
+        } else if ($keywordbranch) {
+            $product = $modelProduct->searchbranch($keywordbranch);
         } else {
             $product = $modelProduct;
-            $oldkey = '';
         }
 
         $dataProduct = $product->paginate(8, 'product');

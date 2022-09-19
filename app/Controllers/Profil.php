@@ -151,6 +151,14 @@ class Profil extends BaseController
 
         $modelUser = new ModelUsers();
 
+        $cekGambar = $modelUser->find($userid);
+
+        $fotoLama = $cekGambar['userfoto'];
+
+        if ($fotoLama != NULL) {
+            unlink('upload/' . $fotoLama);
+        }
+
         $fileGambar = $userfoto->getRandomName();
 
         $userfoto->move('upload', $fileGambar);
