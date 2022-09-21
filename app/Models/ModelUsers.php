@@ -9,7 +9,7 @@ class ModelUsers extends Model
     protected $table            = 'users';
     protected $primaryKey       = 'userid';
     protected $allowedFields    = [
-        'userid', 'usernama', 'userpassword', 'userlevel', 'usergender', 'userlahir', 'useralamat', 'userrt', 'userrw', 'useralamatid', 'usertelp', 'userfoto', 'usermap'
+        'userid', 'usernama', 'userpassword', 'userlevel', 'usergender', 'userlahir', 'useralamat', 'userrt', 'userrw', 'useralamatid', 'usertelp', 'userfoto', 'usernote'
     ];
 
     public function cekUser($user)

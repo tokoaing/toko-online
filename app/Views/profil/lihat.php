@@ -133,74 +133,26 @@
                 <h6 class=" mt-1"><?= $usertelp ?></h6>
             </div>
         </div>
+        <div class="row mb-2">
+            <button type="submit" id="editProfil" class="btn btn-block btn-primary btn-lg"><i class="fas fa-edit"></i> Edit Profil</button>
+        </div>
     </div>
 </div>
 
 <div class="viewmodal" style="display: none;"></div>
 
+<input type="hidden" name="userprofil" id="userprofil" value="<?= sha1(session()->iduser) ?>">
 
 <script>
-    function gantifoto(id) {
-        $.ajax({
-            type: "post",
-            url: "<?= base_url() ?>/profil/editprofil",
-            data: {
-                userid: id
-            },
-            dataType: "json",
-            success: function(response) {
-                if (response.data) {
-                    $('.viewmodal').html(response.data).show();
-                    $('#modalGantiFoto').modal('show');
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + '\n' + thrownError);
-            }
+    $(document).ready(function() {
+        $('#editProfil').click(function(e) {
+            e.preventDefault();
+
+            let user = $('#userprofil').val();
+
+            window.location.href = "<?= base_url() ?>/profil/editprofil/" + user;
         });
-    }
-
-
-    function gantinama(id) {
-        $.ajax({
-            type: "post",
-            url: "<?= base_url() ?>/profil/editprofil",
-            data: {
-                userid: id
-            },
-            dataType: "json",
-            success: function(response) {
-                if (response.data) {
-                    $('.viewmodal').html(response.data).show();
-                    $('#modalGantiProfil').modal('show');
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + '\n' + thrownError);
-            }
-        });
-    }
-
-
-    function gantialamat(id) {
-        $.ajax({
-            type: "post",
-            url: "<?= base_url() ?>/profil/editprofil",
-            data: {
-                userid: id
-            },
-            dataType: "json",
-            success: function(response) {
-                if (response.data) {
-                    $('.viewmodal').html(response.data).show();
-                    $('#modalGantiAlamat').modal('show');
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + '\n' + thrownError);
-            }
-        });
-    }
+    });
 </script>
 
 <?= $this->endSection('isi') ?>

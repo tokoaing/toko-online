@@ -14,27 +14,57 @@
 <div class="container py-5">
     <div class="row">
 
-        <div class="col-lg-12">
+
+        <div class="col-lg-3">
+            <h1 class="h2 pb-4">Kategori</h1>
+            <ul class="list-unstyled templatemo-accordion">
+
+
+                <li class="pb-3">
+
+                    <form action="" method="post">
+                        <div class="input-group mb-3">
+                            <select class="form-control" name="keywordlink" id="keywordlink">
+                                <option value="" selected>Pilih Kategori</option>
+                                <option value=""></option>
+                                <?php foreach ($kategori as $prokat) : ?>
+                                    <option value="<?= $prokat['katid'] ?>"><?= $prokat['katnama'] ?></option>
+
+                                <?php endforeach ?>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-success" type="submit" name="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <!-- <ul class="collapse show list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="#">Men</a></li>
+                            <li><a class="text-decoration-none" href="#">Women</a></li>
+                        </ul> -->
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-lg-9">
             <div class="row">
                 <div class="col-md-6">
                     <ul class="list-inline shop-top-menu pb-3 pt-1">
                         <li class="list-inline-item">
-                            <button type="submit" class="btn btn-outline-success" onclick="linkall()">All</button>
+                            <button type="submit" class="btn btn-outline-none text-success" onclick="linkall()">All</button>
                         </li>
-                        <?php foreach ($kategori as $prokat) : ?>
+                        <?php foreach ($databranch as $rowDataBranch) : ?>
                             <li class="list-inline-item">
                                 <form action="" method="post">
                                     <div class="d-flex">
                                         <div class="input-group mb-3">
-                                            <input type="hidden" class="form-control" name="keywordlink" value="<?= $prokat['katid'] ?>">
+                                            <input type="hidden" class="form-control" name="keywordbranch" value="<?= $rowDataBranch['branchid'] ?>">
                                             <div class="input-group-append">
-                                                <button type="submit" class="btn btn-outline-success" name="submit"><?= $prokat['katnama'] ?></button>
+                                                <button type="submit" class="btn btn-outline-none text-success" name="submit"><?= ucwords(strtolower($rowDataBranch['branchnama'])) ?></button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
-
-
                             </li>
                         <?php endforeach ?>
                     </ul>
@@ -45,7 +75,7 @@
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Masukan pencarian..." name="keyword" value="<?= old('keyword') ?>">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-success" type="submit" name="submit">Cari</button>
+                                    <button class="btn btn-outline-success" type="submit" name="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </div>

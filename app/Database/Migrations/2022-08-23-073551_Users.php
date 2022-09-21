@@ -56,7 +56,7 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'usermap' => [
+            'usernote' => [
                 'type'       => 'TEXT',
             ],
         ]);

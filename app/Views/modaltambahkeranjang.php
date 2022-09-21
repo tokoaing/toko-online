@@ -35,7 +35,7 @@ if ($tampildatakeranjang['kerjml'] == "") {
             <div class="modal-body">
 
                 <div class="card">
-                    <img class="card-img rounded-0 img-fluid" src="<?= base_url() ?>/assets/img/<?= $tampilproduct['prodgambar'] ?>" width="50px" height="50px">
+                    <img class="card-img rounded-0 img-fluid" src="<?= base_url() ?>/upload/<?= $tampilproduct['prodgambar'] ?>" width="50px" height="50px">
                     <div class="card-body">
                         <strong><?= $tampilproduct['prodnama'] ?></strong><br>
                         <?= $tampilproduct['prodtype'] ?>
