@@ -125,11 +125,6 @@ class Home extends BaseController
         $dataProduct = $product->paginate(8, 'product');
 
 
-
-        $data = [];
-
-
-
         if ($rowPeru > 0) {
             $data = [
                 'peruid'            => $rowPeru['peruid'],

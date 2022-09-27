@@ -5,12 +5,12 @@ namespace App\Models;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\Model;
 
-class ModelWilayahPagination extends Model
+class ModelUsersPagination extends Model
 {
-    protected $table = "wilayah";
-    protected $column_order = array(null, 'kelurahan', 'kecamatan', 'kota_kabupaten', 'propinsi', 'kodepos', null);
-    protected $column_search = array('kelurahan', 'kecamatan', 'kota_kabupaten', 'propinsi', 'kodepos');
-    protected $order = array('kelurahan' => 'ASC');
+    protected $table = "users";
+    protected $column_order = array(null, 'userid', 'usernama', null);
+    protected $column_search = array('userid', 'usernama');
+    protected $order = array('userid' => 'ASC');
     protected $request;
     protected $db;
     protected $dt;
@@ -21,7 +21,7 @@ class ModelWilayahPagination extends Model
         $this->db = db_connect();
         $this->request = $request;
 
-        $this->dt = $this->db->table($this->table);
+        $this->dt = $this->db->table($this->table)->join('levels', 'userlevel=levelid', 'left');
     }
     private function _get_datatables_query()
     {
