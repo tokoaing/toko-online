@@ -687,11 +687,11 @@ class Home extends BaseController
                 } else {
                     $inputUserValidasi = new ModelUserValidasi();
                     $inputUserValidasi->insert([
-                        'userid'            => $userid,
-                        'usernama'          => $usernama,
-                        'userpassword'      => sha1($userpassword),
-                        'userlevel'         => $userlevel,
-                        'userstatus'        => 'Progress',
+                        'valuserid'            => $userid,
+                        'valusernama'          => $usernama,
+                        'valuserpassword'      => sha1($userpassword),
+                        'valuserlevel'         => $userlevel,
+                        'valuserstatus'        => 'Progress',
                     ]);
 
                     $data = [
@@ -756,15 +756,15 @@ class Home extends BaseController
         $rowUserValidasi = $modelUserValidasi->cekUser($id)->getRowArray();
 
         if ($rowUserValidasi > 0) {
-            $userid = $rowUserValidasi['userid'];
-            $usernama = $rowUserValidasi['usernama'];
-            $userpassword = $rowUserValidasi['userpassword'];
-            $userlevel = $rowUserValidasi['userlevel'];
+            $userid = $rowUserValidasi['valuserid'];
+            $usernama = $rowUserValidasi['valusernama'];
+            $userpassword = $rowUserValidasi['valuserpassword'];
+            $userlevel = $rowUserValidasi['valuserlevel'];
             $userstatus = 'Terverifikasi';
 
             $modelUpdateUser = new ModelUserValidasi();
             $modelUpdateUser->update($userid, [
-                'userstatus' => $userstatus
+                'valuserstatus' => $userstatus
             ]);
 
             if ($modelUpdateUser) {
@@ -856,31 +856,44 @@ class Home extends BaseController
                     ]
                 ];
             } else {
-                $modelUser = new ModelUsers();
-                $rowUser = $modelUser->find($emailuser);
 
-                $userid      = $rowUser['userid'];
-                $usernama      = $rowUser['usernama'];
+                $modelUserValidasi = new ModelUserValidasi();
 
-                $useranda = sha1($userid);
+                $cekUser = $modelUserValidasi->find($emailuser);
 
-                $isiemail = "<h1>HI " . $usernama . " ...</h1><p>Ganti Password Anda<br><br>Kamu bisa klik tautan dibawah ini untuk mengganti Sandi Anda : <br>
+                if ($cekUser['valuserstatus'] == "Progress") {
+                    $json = [
+                        'error' => [
+                            'errEmail'         => 'Email belum terverifikasi...',
+                        ]
+                    ];
+                } else {
+                    $modelUser = new ModelUsers();
+                    $rowUser = $modelUser->find($emailuser);
+
+                    $userid      = $rowUser['userid'];
+                    $usernama      = $rowUser['usernama'];
+
+                    $useranda = sha1($userid);
+
+                    $isiemail = "<h1>HI " . $usernama . " ...</h1><p>Ganti Password Anda<br><br>Kamu bisa klik tautan dibawah ini untuk mengganti Sandi Anda : <br>
                         http://192.168.1.99/toko-online/public/home/ubahsandi/" . $useranda . "</p>";
 
 
-                $email = service('email');
-                $email->setTo($userid);
-                $email->setFrom('sutino.skom@gmail.com', 'Sutino');
+                    $email = service('email');
+                    $email->setTo($userid);
+                    $email->setFrom('sutino.skom@gmail.com', 'Sutino');
 
-                $email->setSubject('Lupa Kata Sandi');
+                    $email->setSubject('Lupa Kata Sandi');
 
-                $email->setMessage($isiemail);
+                    $email->setMessage($isiemail);
 
 
-                if ($email->send()) {
-                    $json = [
-                        'berhasil'        => 'Tautan berhasil dikirimkan ke email Anda, silahkan buka email Anda...'
-                    ];
+                    if ($email->send()) {
+                        $json = [
+                            'berhasil'        => 'Tautan berhasil dikirimkan ke email Anda, silahkan buka email Anda...'
+                        ];
+                    }
                 }
             }
             echo json_encode($json);

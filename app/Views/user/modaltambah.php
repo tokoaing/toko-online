@@ -16,7 +16,7 @@
 
                     <div class="form-group">
                         <label for="">User ID</label>
-                        <input type="text" name="userid" id="userid" class="form-control" placeholder="Masukan User ID..." autocomplete="off">
+                        <input type="email" name="userid" id="userid" class="form-control" placeholder="Masukan User ID..." autocomplete="off">
                         <div class="invalid-feedback errorUserId"></div>
                     </div>
 
@@ -24,6 +24,24 @@
                         <label for="">Nama Lengkap</label>
                         <input type="text" name="usernama" id="usernama" class="form-control" placeholder="Masukan Nama Lengkap..." autocomplete="off">
                         <div class="invalid-feedback errorUserNama"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input type="text" name="userpassword" id="userpassword" class="form-control" placeholder="Masukan Password..." autocomplete="off">
+                        <div class="invalid-feedback errorUserPassword"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Level</label>
+                        <select name="userlevel" id="userlevel" class="form-control">
+                            <option value="" selected>Pilih Level</option>
+                            <option value=""></option>
+                            <?php foreach ($datalevel as $rowlevel) : ?>
+                                <option value="<?= $rowlevel['levelid'] ?>"><?= $rowlevel['levelnama'] ?></option>
+                            <?php endforeach ?>
+                        </select>
+                        <div class="invalid-feedback errorUserLevel"></div>
                     </div>
 
 
@@ -44,6 +62,8 @@
     function kosong() {
         $('#userid').val('');
         $('#usernama').val('');
+        $('#userpassword').val('');
+        $('#userlevel').val('');
     }
 
     $(document).ready(function() {
@@ -74,27 +94,51 @@
                             $('#usernama').removeClass('is-invalid');
                             $('#usernama').addClass('is-valid');
                         }
+
+                        if (err.errUserPassword) {
+                            $('#userpassword').addClass('is-invalid');
+                            $('.errorUserPassword').html(err.errUserPassword);
+                        } else {
+                            $('#userpassword').removeClass('is-invalid');
+                            $('#userpassword').addClass('is-valid');
+                        }
+
+                        if (err.errUserLevel) {
+                            $('#userlevel').addClass('is-invalid');
+                            $('.errorUserLevel').html(err.errUserLevel);
+                        } else {
+                            $('#userlevel').removeClass('is-invalid');
+                            $('#userlevel').addClass('is-valid');
+                        }
                     }
 
                     if (response.sukses) {
-                        Swal.fire({
-                            title: 'Berhasil',
-                            text: response.sukses +
-                                ", Apakah ingin menambah User ?",
-                            icon: 'success',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Ya!',
-                            cancelButtonText: 'Batal',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $('#modalTambah').modal('show');
-                                kosong();
-                            } else {
-                                window.location.reload();
+
+                        let data = response.sukses;
+
+                        let userid = data.userid;
+                        let usernama = data.usernama;
+
+                        $.ajax({
+                            type: "post",
+                            url: "<?= base_url() ?>/user/kirimverifikasi",
+                            data: {
+                                userid: userid,
+                                usernama: usernama
+                            },
+                            dataType: "json",
+                            success: function(response) {
+                                if (response.berhasil) {
+                                    Swal.fire(
+                                        'Berhasil',
+                                        response.berhasil,
+                                        'success'
+                                    ).then((result) => {
+                                        window.location.reload();
+                                    })
+                                }
                             }
-                        })
+                        });
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {

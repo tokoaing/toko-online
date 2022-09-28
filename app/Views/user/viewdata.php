@@ -32,6 +32,8 @@
                                 <th>No</th>
                                 <th>User ID</th>
                                 <th>Nama</th>
+                                <th>Level</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -64,7 +66,7 @@
                 "type": "POST",
             },
             "colomnDefs": [{
-                "targets": [0, 3],
+                "targets": [0, 5],
                 "orderable": false,
             }, ],
         });
@@ -115,24 +117,41 @@
     }
 
     function hapus(userid) {
-        $.ajax({
-            url: "<?= base_url() ?>/user/hapus/" + userid,
-            dataType: "json",
-            success: function(response) {
-                if (response.sukses) {
-                    swal.fire(
-                        'Berhasil',
-                        response.sukses,
-                        'success'
-                    ).then((result) => {
-                        window.location.reload();
-                    })
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + '\n' + thrownError);
+        Swal.fire({
+            title: 'Opss...',
+            text: "Apakah anda ingin menghapus data user ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya!',
+            cancelButtonText: 'Batal',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= base_url() ?>/user/hapus/" + userid,
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.sukses) {
+                            swal.fire(
+                                'Berhasil',
+                                response.sukses,
+                                'success'
+                            ).then((result) => {
+                                window.location.reload();
+                            })
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + '\n' + thrownError);
+                    }
+                });
+            } else {
+                window.location.reload();
             }
-        });
+        })
+
+
     }
 </script>
 

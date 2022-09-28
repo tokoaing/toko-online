@@ -7,10 +7,10 @@ use CodeIgniter\Model;
 
 class ModelUsersPagination extends Model
 {
-    protected $table = "users";
-    protected $column_order = array(null, 'userid', 'usernama', null);
-    protected $column_search = array('userid', 'usernama');
-    protected $order = array('userid' => 'ASC');
+    protected $table = "uservalidasi";
+    protected $column_order = array(null, 'valuserid', 'valusernama', null);
+    protected $column_search = array('valuserid', 'valusernama');
+    protected $order = array('valuserid' => 'ASC');
     protected $request;
     protected $db;
     protected $dt;
@@ -21,7 +21,7 @@ class ModelUsersPagination extends Model
         $this->db = db_connect();
         $this->request = $request;
 
-        $this->dt = $this->db->table($this->table)->join('levels', 'userlevel=levelid', 'left');
+        $this->dt = $this->db->table($this->table)->join('levels', 'valuserlevel=levelid', 'left')->orderBy('valuserlevel', 'asc')->orderBy('valusernama', 'asc');
     }
     private function _get_datatables_query()
     {

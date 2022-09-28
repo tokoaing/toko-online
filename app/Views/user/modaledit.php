@@ -4,24 +4,36 @@
         <div class="modal-content">
 
 
-            <form action="<?= base_url('level/updatedata') ?>" class="formsimpan">
+            <form action="<?= base_url('user/updatedata') ?>" class="formsimpan">
                 <?= csrf_field(); ?>
 
-                <div class="modal-header bg-info text-white">
-                    <h5 class="modal-title" id="staticBackdropLabel">Edit Level</h5>
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
 
 
-                    <input type="hidden" name="levelidlama" id="levelidlama" value="<?= $levelid ?>">
+                    <input type="hidden" name="useridlama" id="useridlama" value="<?= $userid ?>">
 
                     <div class="form-group">
-                        <label for="">Level Nama</label>
-                        <input type="text" name="levelnama" id="levelnama" value="<?= $levelnama ?>" class="form-control" placeholder="Masukan Level Nama...">
-                        <div class="invalid-feedback errorLevelNama"></div>
+                        <label for="">User Nama</label>
+                        <input type="text" name="usernama" id="usernama" value="<?= $usernama ?>" class="form-control" readonly>
                     </div>
+
+                    <div class="form-group">
+                        <label for="">Level</label>
+                        <select name="userlevel" id="userlevel" class="form-control">
+                            <option value="" selected>Pilih Level</option>
+                            <option value=""></option>
+                            <?php foreach ($datalevel as $rowlevel) : ?>
+                                <option value="<?= $rowlevel['levelid'] ?>" <?= ($rowlevel['levelid'] == $userlevel) ? 'selected' : '' ?>><?= $rowlevel['levelnama'] ?></option>
+                            <?php endforeach ?>
+                        </select>
+                        <div class="invalid-feedback errorUserLevel"></div>
+                    </div>
+
 
 
                 </div>
@@ -38,10 +50,6 @@
 </div>
 
 <script>
-    function kosong() {
-        $('#levelnama').val('');
-    }
-
     $(document).ready(function() {
         $('.formsimpan').submit(function(e) {
             e.preventDefault();
@@ -55,12 +63,12 @@
                     if (response.error) {
                         let err = response.error;
 
-                        if (err.errLevelNama) {
-                            $('#levelnama').addClass('is-invalid');
-                            $('.errorLevelNama').html(err.errLevelNama);
+                        if (err.errUserLevel) {
+                            $('#userlevel').addClass('is-invalid');
+                            $('.errorUserLevel').html(err.errUserLevel);
                         } else {
-                            $('#levelnama').removeClass('is-invalid');
-                            $('#levelnama').addClass('is-valid');
+                            $('#userlevel').removeClass('is-invalid');
+                            $('#userlevel').addClass('is-valid');
                         }
 
                     }

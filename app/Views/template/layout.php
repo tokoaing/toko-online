@@ -167,7 +167,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-success elevation-4">
             <!-- Brand Logo -->
             <a href="../../index3.html" class="brand-link">
                 <img src="<?= base_url() ?>/upload/favicon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -210,6 +210,12 @@
                                     <a href="<?= base_url() ?>/user/index" class="nav-link <?= ($submenu == 'user') ? 'active' : '' ?>">
                                         <i class="fas fa-user-cog nav-icon"></i>
                                         <p>User</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>/perusahaan/index" class="nav-link <?= ($submenu == 'perusahaan') ? 'active' : '' ?>">
+                                        <i class="fas fa-city nav-icon"></i>
+                                        <p>Perusahaan</p>
                                     </a>
                                 </li>
                             </ul>
@@ -270,7 +276,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.2.0
             </div>
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2022 <a href="<?= base_url() ?>"> Graver Furniture</a>.</strong>
         </footer>
 
         <!-- Control Sidebar -->

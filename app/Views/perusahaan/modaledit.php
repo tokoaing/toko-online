@@ -4,23 +4,23 @@
         <div class="modal-content">
 
 
-            <form action="<?= base_url('level/updatedata') ?>" class="formsimpan">
+            <form action="<?= base_url('perusahaan/updatedata') ?>" class="formsimpan">
                 <?= csrf_field(); ?>
 
                 <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="staticBackdropLabel">Edit Level</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit Perusahaan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
 
 
-                    <input type="hidden" name="levelidlama" id="levelidlama" value="<?= $levelid ?>">
+                    <input type="hidden" name="peruidlama" id="peruidlama" value="<?= $peruid ?>">
 
                     <div class="form-group">
-                        <label for="">Level Nama</label>
-                        <input type="text" name="levelnama" id="levelnama" value="<?= $levelnama ?>" class="form-control" placeholder="Masukan Level Nama...">
-                        <div class="invalid-feedback errorLevelNama"></div>
+                        <label for="">Nama Perusahaan</label>
+                        <input type="text" name="perunama" id="perunama" value="<?= $perunama ?>" class="form-control" placeholder="Masukan Nama Perusahaan...">
+                        <div class="invalid-feedback errorPeruNama"></div>
                     </div>
 
 
@@ -38,10 +38,6 @@
 </div>
 
 <script>
-    function kosong() {
-        $('#levelnama').val('');
-    }
-
     $(document).ready(function() {
         $('.formsimpan').submit(function(e) {
             e.preventDefault();
