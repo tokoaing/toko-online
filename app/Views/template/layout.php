@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Graver Furniture</title>
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/upload/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/assets/img/favicon.png">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -63,7 +63,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">Home</a>
+                    <a href="<?= base_url() ?>/main" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -158,7 +158,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="#" title="Logout" id="logout">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
@@ -169,7 +169,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-success elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
+            <a href="<?= base_url() ?>/main" class="brand-link">
                 <img src="<?= base_url() ?>/upload/favicon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Graver Furniture</span>
             </a>
@@ -253,9 +253,9 @@
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <ul class="list-group list-group-horizontal">
-                                <li class="list-group-item border-0 bg-light"><a class="text-success" href="<?= base_url() ?>/Main/index">Home</a></li>
-                                <li class="list-group-item border-0 bg-light"><a class="text-success" href="<?= base_url() ?>/<?= $submenu ?>/index"><?= $submenu ?></a></li>
-                                <li class="list-group-item border-0 bg-light"><a class="text-success" href="<?= base_url() ?>/<?= $actmenu ?>/index"><?= $actmenu ?></a></li>
+                                <li class="list-group-item border-0 bg-light"><a class="text-success" href="<?= base_url() ?>/Main">Home</a></li>
+                                <li class="list-group-item border-0 bg-light"><a class="text-success" href="<?= base_url() ?>/<?= $submenu ?>"><?= $submenu ?></a></li>
+                                <li class="list-group-item border-0 bg-light"><a class="text-success" href="<?= base_url() ?>/<?= $actmenu ?>"><?= $actmenu ?></a></li>
                             </ul>
                         </div>
                     </div>
@@ -274,7 +274,7 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.2.0
+                <b>Version</b> 1.0.0
             </div>
             <strong>Copyright &copy; 2022 <a href="<?= base_url() ?>"> Graver Furniture</a>.</strong>
         </footer>
@@ -340,6 +340,30 @@
             })
 
         })
+
+
+
+        $(document).ready(function() {
+            // tombol logout
+            $('#logout').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "<?= base_url() ?>/auth/keluar",
+                    dataType: "json",
+                    success: function(response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: response.sukses
+                        }).then((resul) => {
+                            if (resul.isConfirmed) {
+                                window.location.href = '<?= base_url() ?>/auth/index';
+                            }
+                        });
+                    }
+                });
+            });
+        });
     </script>
 </body>
 

@@ -597,6 +597,7 @@ class Home extends BaseController
                         $simpan_session = [
                             'iduser'    => $email,
                             'namauser'  => $cekUser['usernama'],
+                            'userlevel'  => $cekUser['userlevel'],
                         ];
                         session()->set($simpan_session);
                         $json = [

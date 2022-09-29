@@ -528,8 +528,8 @@
                                 icon: 'success',
                                 title: 'Berhasil',
                                 text: response.sukses
-                            }).then((resul) => {
-                                if (resul.isConfirmed) {
+                            }).then((result) => {
+                                if (result.isConfirmed) {
                                     window.location
                                         .reload();
                                 }
@@ -584,8 +584,8 @@
                             icon: 'success',
                             title: 'Berhasil',
                             text: response.sukses
-                        }).then((resul) => {
-                            if (resul.isConfirmed) {
+                        }).then((result) => {
+                            if (result.isConfirmed) {
                                 window.location.href = '<?= base_url() ?>/home/index';
                             }
                         });
@@ -620,8 +620,8 @@
                                 icon: 'success',
                                 title: 'Berhasil',
                                 text: response.berhasil
-                            }).then((resul) => {
-                                if (resul.isConfirmed) {
+                            }).then((result) => {
+                                if (result.isConfirmed) {
                                     window.location
                                         .reload();
                                 }
